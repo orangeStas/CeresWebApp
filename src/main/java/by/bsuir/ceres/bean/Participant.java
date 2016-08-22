@@ -30,6 +30,7 @@ public class Participant implements Serializable {
     private String description;
 
     @ManyToOne
+    @JoinColumn(name = "contact_id")
     private ContactPerson contactPerson;
 
     @Column(name = "image")

@@ -15,14 +15,15 @@ public class University implements Serializable {
     @Column(name = "name")
     private String name;
 
-    private Set<Faculty> faculties;
-
     @OneToMany(cascade = CascadeType.ALL)
     @JoinTable(
             name = "university_faculty",
             joinColumns = @JoinColumn(name = "idUniversity"),
             inverseJoinColumns = @JoinColumn(name = "idFaculty")
-        )
+    )
+    private Set<Faculty> faculties;
+
+
     public Set<Faculty> getFaculties() {
         return faculties;
     }

@@ -25,11 +25,9 @@ public class User implements Serializable {
     @Column(name = "remember_token")
     private String rememberToken;
 
-    @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "created_at")
     private Timestamp createdDate;
 
-    @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "updated_at")
     private Timestamp modifiedDate;
 

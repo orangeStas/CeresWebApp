@@ -21,14 +21,13 @@ public class News implements Serializable {
     @Column(name = "content")
     private String content;
 
-    @ManyToOne
+    @ManyToOne(targetEntity = User.class)
+    @JoinColumn(name = "author")
     private User author;
 
-    @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "created_at")
     private Timestamp creationDate;
 
-    @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "updated_at")
     private Timestamp modificationDate;
 

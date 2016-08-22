@@ -24,6 +24,7 @@ public class Student implements Serializable {
     private String surname;
 
     @ManyToOne
+    @JoinColumn(name = "idSpeciality")
     private Speciality speciality;
 
     public Long getId() {
