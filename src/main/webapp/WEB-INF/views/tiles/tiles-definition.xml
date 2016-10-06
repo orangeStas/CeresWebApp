@@ -7,5 +7,9 @@
 
     </definition>
 
+    <definition name="newsTemplate">
+        <put-attribute name="content" value="/WEB-INF/views/pages/news.jsp"/>
+    </definition>
+
 
 </tiles-definitions>
