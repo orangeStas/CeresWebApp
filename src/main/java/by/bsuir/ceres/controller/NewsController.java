@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import java.util.List;
+import java.util.ArrayList;
 
 @Controller
 public class NewsController {
@@ -17,9 +17,9 @@ public class NewsController {
     private INewsService newsService;
 
     @RequestMapping("/allNews")
-    public ModelAndView getAllNews(@ModelAttribute("newsList")List<News> newsList) {
+    public ModelAndView getAllNews(@ModelAttribute("newsList")ArrayList<News> newsList) {
         ModelAndView modelAndView = new ModelAndView("newsTemplate");
-        List<News> newses = newsService.getAllNews();
+        ArrayList<News> newses = (ArrayList<News>) newsService.getAllNews();
         modelAndView.addObject("newsList", newses);
 
         return modelAndView;

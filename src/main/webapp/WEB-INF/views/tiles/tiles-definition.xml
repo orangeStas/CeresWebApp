@@ -7,7 +7,7 @@
 
     </definition>
 
-    <definition name="newsTemplate">
+    <definition name="newsTemplate" template="/WEB-INF/views/template/def_template.jsp">
         <put-attribute name="content" value="/WEB-INF/views/pages/news.jsp"/>
     </definition>
 
