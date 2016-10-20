@@ -8,8 +8,12 @@
     </definition>
 
     <definition name="newsTemplate" template="/WEB-INF/views/template/def_template.jsp">
+        <put-attribute name="header" value="/WEB-INF/views/layouts/default/header.jsp" />
         <put-attribute name="content" value="/WEB-INF/views/pages/news.jsp"/>
     </definition>
 
+<!--    <definition name="participantsTemplate" template="">
+        <put-attribute name="content" value=""/>
+    </definition>>-->
 
 </tiles-definitions>
