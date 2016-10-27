@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%--
   Created by IntelliJ IDEA.
   User: stas-
@@ -7,13 +8,48 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
-<head>
-    <title>Title</title>
-</head>
-<body>
-    <c:forEach var="news" items="${newsList}">
-        <h1>${news.title}</h1>
+
+<div class="container">
+    <h3>Новости</h3>
+
+    <c:forEach var="news" items="${newsList}" varStatus="loop">
+        <div class="row">
+
+            <div class="card col s5 hoverable">
+                <div class="card-image waves-effect waves-block waves-light">
+                    <img class="activator" src="resources/images/news/${newsList[loop.index].imageFileName}">
+                </div>
+                <div class="card-content">
+                    <p>${newsList[loop.index].modificationDate}</p>
+                            <span class="card-title activator grey-text text-darken-4">${newsList[loop.index].title}<i
+                                    class="material-icons right">more_vert</i></span>
+                </div>
+                <div class="card-reveal">
+                            <span class="card-title grey-text text-darken-4">${newsList[loop.index].title}<i
+                                    class="material-icons right">close</i></span>
+                    ${newsList[loop.index].content}
+                </div>
+            </div>
+
+         <%--   @if( !(count($short_news)%2 != 0 && $i == count($news) - 1))--%>
+            <c:if test="${not (fn:length(newsList) % 2 != 0)}">
+            <div class="card col s5 offset-s2 hoverable">
+                <div class="card-image waves-effect waves-block waves-light">
+                    <img class="activator" src="resources/images/news/${newsList[loop.index + 1].imageFileName}">
+                </div>
+                <div class="card-content">
+                    <p>${newsList[loop.index + 1].modificationDate}</p>
+                                <span class="card-title activator grey-text text-darken-4">${newsList[loop.index + 1].title}<i
+                                        class="material-icons right">more_vert</i></span>
+                </div>
+                <div class="card-reveal">
+                                <span class="card-title grey-text text-darken-4">${newsList[loop.index + 1].title}<i
+                                        class="material-icons right">close</i></span>
+                        ${newsList[loop.index + 1].content}
+                </div>
+            </div>
+            </c:if>
+        </div> <!-- End row-->
+
     </c:forEach>
-</body>
-</html>
+</div>

@@ -11,4 +11,6 @@ public interface MenuService {
     void createMenu(Menu menu);
     void updateMenuById(Menu menu);
     void deleteMenuById(Long id);
+    List<Menu> getTopMenu();
+    List<Menu> getRightMenu();
 }
