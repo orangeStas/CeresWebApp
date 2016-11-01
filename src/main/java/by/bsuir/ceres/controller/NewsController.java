@@ -22,7 +22,7 @@ public class NewsController {
     @Autowired
     private MenuService menuService;
 
-    @RequestMapping("/allNews")
+    @RequestMapping("/news")
     public ModelAndView getAllNews(@ModelAttribute("newsList")ArrayList<News> newsList,
                                    @ModelAttribute("topMenu")ArrayList<Menu> topMenu) {
 
@@ -30,8 +30,8 @@ public class NewsController {
         ArrayList<News> newses = (ArrayList<News>) newsService.getAllNews();
         modelAndView.addObject("newsList", newses);
 
-        ArrayList<Menu> topMenus = (ArrayList<Menu>) menuService.getTopMenu();
-        modelAndView.addObject("topMenu", topMenus);
+        topMenu = (ArrayList<Menu>) menuService.getTopMenu();
+        modelAndView.addObject("topMenu", topMenu);
 
         return modelAndView;
     }
