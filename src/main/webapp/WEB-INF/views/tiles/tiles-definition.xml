@@ -8,6 +8,10 @@
         <put-attribute name="content" value="/WEB-INF/views/pages/index.jsp"/>
     </definition>
 
+    <definition name="indexTemplate" extends="defaultTemplate">
+        <put-attribute name="content" value="/WEB-INF/views/pages/index.jsp"/>
+    </definition>
+
     <definition name="newsTemplate" extends="defaultTemplate">
         <put-attribute name="content" value="/WEB-INF/views/pages/news.jsp"/>
     </definition>
