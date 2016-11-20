@@ -31,7 +31,6 @@
                 </div>
             </div>
 
-                <%--  @if( !(count($short_news)%2 != 0 && $i == count($news) - 1))--%>
             <c:if test="${loop.index + 2 <= fn:length(newsList)}">
                 <div class="card col s5 offset-s2 hoverable">
                     <div class="card-image waves-effect waves-block waves-light">

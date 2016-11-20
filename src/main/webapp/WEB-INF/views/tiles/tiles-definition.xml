@@ -34,4 +34,9 @@
         <put-attribute name="content" value="/WEB-INF/views/pages/login.jsp"/>
     </definition>
 
+    <definition name="addCourseWorkTemplate" extends="defaultTemplate">
+        <put-attribute name="navigation" value="/WEB-INF/views/layouts/default/header.jsp"/>
+        <put-attribute name="content" value="/WEB-INF/views/pages/addCourseWork.jsp" />
+    </definition>
+
 </tiles-definitions>
