@@ -6,10 +6,10 @@
     <security:http auto-config="true">
         <security:intercept-url pattern="/" access="permitAll"/>
         <security:intercept-url pattern="/education" access="hasRole('ROLE_USER')"/>
-        <security:form-login login-page="/login" default-target-url="/welcome"
+        <security:form-login login-page="/login" default-target-url="/index"
                              authentication-failure-url="/login?error"
                              username-parameter="email" password-parameter="password"/>
-        <security:logout logout-success-url="/login?logout"/>
+        <security:logout logout-success-url="/login?logout" invalidate-session="true"/>
     </security:http>
 
     <security:authentication-manager alias="authenticationManager">

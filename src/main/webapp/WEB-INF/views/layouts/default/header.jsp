@@ -27,10 +27,15 @@
             </c:if>
         </c:forEach>
 
-        <li><a href="<c:url value="/auth/login"/>" class="waves-effect waves-light btn">Войти</a></li>
+        <c:if test="${empty pageContext.request.userPrincipal.name}">
+            <li><a href="<c:url value="/login"/>" class="waves-effect waves-light btn">Войти</a></li>
+        </c:if>
+        <c:if test="${not empty pageContext.request.userPrincipal.name}">
+            <li><a href="/login?logout"
+                   class="waves-effect waves-light red accent-2 btn">${pageContext.request.userPrincipal.name}</a></li>
+        </c:if>
 
-        <li><a href="/auth/logout"
-               class="waves-effect waves-light red accent-2">${pageContext.request.userPrincipal.name}</a></li>
+
         <%--@if(Auth::check())
         <li><a href="/auth/logout" class="waves-effect waves-light btn red accent-2">Выйти</a></li>
         @else

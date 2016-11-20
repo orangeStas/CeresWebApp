@@ -29,4 +29,9 @@
         <put-attribute name="content" value="/WEB-INF/views/pages/registration.jsp"/>
     </definition>
 
+    <definition name="loginTemplate" extends="defaultTemplate">
+        <put-attribute name="navigation" value="/WEB-INF/views/layouts/default/header_auth.jsp"/>
+        <put-attribute name="content" value="/WEB-INF/views/pages/login.jsp"/>
+    </definition>
+
 </tiles-definitions>
