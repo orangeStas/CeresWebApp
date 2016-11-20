@@ -12,6 +12,6 @@
         <mapping class="by.bsuir.ceres.bean.education.Faculty"/>
         <mapping class="by.bsuir.ceres.bean.education.University"/>
         <mapping class="by.bsuir.ceres.bean.education.Speciality"/>
-
+        <mapping class="by.bsuir.ceres.bean.Role"/>
     </session-factory>
 </hibernate-configuration>

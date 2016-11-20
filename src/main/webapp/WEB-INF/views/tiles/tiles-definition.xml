@@ -16,8 +16,17 @@
         <put-attribute name="content" value="/WEB-INF/views/pages/news.jsp"/>
     </definition>
 
+    <definition name="aboutTemplate" extends="defaultTemplate">
+        <put-attribute name="content" value="/WEB-INF/views/pages/about.jsp"/>
+    </definition>
+
     <definition name="participantsTemplate" extends="defaultTemplate">
         <put-attribute name="content" value="/WEB-INF/views/pages/participants.jsp"/>
+    </definition>
+
+    <definition name="registrationTemplate" extends="defaultTemplate">
+        <put-attribute name="navigation" value="/WEB-INF/views/layouts/default/header_auth.jsp"/>
+        <put-attribute name="content" value="/WEB-INF/views/pages/registration.jsp"/>
     </definition>
 
 </tiles-definitions>

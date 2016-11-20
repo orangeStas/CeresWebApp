@@ -10,20 +10,15 @@ import org.springframework.web.servlet.ModelAndView;
 
 import java.util.ArrayList;
 
-/**
- * Created by wowrumal on 11/1/2016.
- */
 @Controller
-public class IndexController {
+public class AboutController {
 
     @Autowired
-    private MenuService menuService;
+    MenuService menuService;
 
-    @RequestMapping("/index")
-    public ModelAndView getIndexPage(@ModelAttribute("topMenu")ArrayList<Menu> topMenu) {
-
-        ModelAndView modelAndView = new ModelAndView("indexTemplate");
-
+    @RequestMapping("/about-us")
+    public ModelAndView aboutPage(@ModelAttribute ("topMenu")ArrayList<Menu> topMenu) {
+        ModelAndView modelAndView = new ModelAndView("aboutTemplate");
         topMenu = (ArrayList<Menu>) menuService.getTopMenu();
         modelAndView.addObject("topMenu", topMenu);
 

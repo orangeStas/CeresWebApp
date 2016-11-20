@@ -53,7 +53,7 @@ public class MenuServiceImpl implements MenuService {
 
         menus.forEach(m -> {
 
-            if (m.getPosition().equals("top")) {
+            if (m.getPosition().equals("top") && m.isActive()) {
 
                 menus1.add(m);
             }
@@ -70,7 +70,7 @@ public class MenuServiceImpl implements MenuService {
 
         menus.forEach(m -> {
 
-            if (m.getPosition().equals("right")) {
+            if (m.getPosition().equals("right") && m.isActive()) {
 
                 menus1.add(m);
             }

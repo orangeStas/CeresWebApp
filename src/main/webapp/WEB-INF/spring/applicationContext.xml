@@ -9,7 +9,17 @@
        http://www.springframework.org/schema/cache http://www.springframework.org/schema/cache/spring-cache.xsd
        http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 
-       <mvc:resources mapping="/resources/**" location="../resources/"/>
+       <mvc:resources mapping="/resources/**" location="resources"/>
 
        <import resource="classpath:bundle-context.xml"/>
+       <!--<import resource="applicationSecurity.xml"/>-->
+       <import resource="appconfig-security.xml"/>
+
+       <bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
+              <property name="basenames">
+                     <list>
+                            <value>validation</value>
+                     </list>
+              </property>
+       </bean>
 </beans>

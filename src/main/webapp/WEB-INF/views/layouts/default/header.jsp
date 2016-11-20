@@ -1,6 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <%--
   Created by IntelliJ IDEA.
   User: stas-
@@ -26,7 +27,10 @@
             </c:if>
         </c:forEach>
 
-        <li><a href="<c:url value="/auth/login"/>" class="waves-effect waves-light">Войти</a></li>
+        <li><a href="<c:url value="/auth/login"/>" class="waves-effect waves-light btn">Войти</a></li>
+
+        <li><a href="/auth/logout"
+               class="waves-effect waves-light red accent-2">${pageContext.request.userPrincipal.name}</a></li>
         <%--@if(Auth::check())
         <li><a href="/auth/logout" class="waves-effect waves-light btn red accent-2">Выйти</a></li>
         @else
@@ -46,9 +50,11 @@
             </c:if>
         </c:forEach>
 
+
         <li><a href="<c:url value="/auth/login"/>" class="waves-effect waves-light">Войти</a></li>
+
         <%--@if(Auth::check())
-        <li><a href="/auth/logout" class="waves-effect waves-light red accent-2">Выйти</a></li>
+
         @else
         <li><a href="/auth/login" class="waves-effect waves-light">Войти</a></li>
         @endif--%>
