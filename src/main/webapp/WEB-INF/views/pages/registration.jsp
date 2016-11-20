@@ -12,6 +12,8 @@
 
     <form:form method="POST" modelAttribute="userForm" class="form-signin">
         <h2 class="form-signin-heading">Create your account</h2>
+        <input type="hidden" name="${_csrf.parameterName}"
+               value="${_csrf.token}" />
         <spring:bind path="email">
             <div class="form-group ${status.error ? 'has-error' : ''}">
                 <form:input type="email" path="email" class="form-control" placeholder="Email"
