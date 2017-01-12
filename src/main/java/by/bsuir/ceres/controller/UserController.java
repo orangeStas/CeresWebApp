@@ -1,5 +1,7 @@
 package by.bsuir.ceres.controller;
 
+import by.bsuir.ceres.bean.Student;
+import by.bsuir.ceres.bean.TO.RegistrationTO;
 import by.bsuir.ceres.bean.User;
 import by.bsuir.ceres.service.SecurityService;
 import by.bsuir.ceres.service.UserService;
@@ -34,14 +36,14 @@ public class UserController {
     private UserValidator userValidator;
 
     @RequestMapping(value = "/registration", method = RequestMethod.GET)
-    public ModelAndView registration(@ModelAttribute User userForm,
+    public ModelAndView registration(@ModelAttribute RegistrationTO registrationForm,
                                      ModelMap modelMap) {
         ModelAndView modelAndView = new ModelAndView("registrationTemplate");
-        if (userForm == null) {
-            userForm = new User();
+        if (registrationForm == null) {
+            registrationForm = new RegistrationTO();
         }
-        modelAndView.addObject("userForm", userForm);
-        modelAndView.addObject(BindingResult.MODEL_KEY_PREFIX + "userForm", modelMap.get("error"));
+        modelAndView.addObject("registrationForm", registrationForm);
+        modelAndView.addObject(BindingResult.MODEL_KEY_PREFIX + "registrationForm", modelMap.get("error"));
         return modelAndView;
     }
 
@@ -69,10 +71,14 @@ public class UserController {
     }
 
     @RequestMapping(value = "/registration", method = RequestMethod.POST)
-    public String registration(@ModelAttribute("userForm") User userForm,
+    public String registration(@ModelAttribute("registrationForm") RegistrationTO registrationForm,
                                BindingResult bindingResult,
                                Model model,
                                RedirectAttributes attributes) {
+
+        User userForm = registrationForm.getUser();
+        Student studentForm = registrationForm.getStudent();
+
         userValidator.validate(userForm, bindingResult);
 
         if (bindingResult.hasErrors()) {
