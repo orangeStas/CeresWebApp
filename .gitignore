@@ -1,4 +1,5 @@
 .idea
+ceres_app.iml
 ceres.iml
 .idea/dataSources.local.xml
 .idea/workspace.xml

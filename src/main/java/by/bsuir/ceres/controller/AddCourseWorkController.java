@@ -19,6 +19,7 @@ import java.util.ArrayList;
  * Created by wowru on 11/20/2016.
  */
 @Controller
+@RequestMapping("/education")
 public class AddCourseWorkController {
 
     @Autowired
@@ -36,7 +37,6 @@ public class AddCourseWorkController {
         courseWork = new CourseWork();
 
         topMenu = (ArrayList<Menu>) menuService.getTopMenu();
-
         modelAndView.addObject("courseWork", courseWork);
         modelAndView.addObject("topMenu", topMenu);
 
@@ -52,7 +52,7 @@ public class AddCourseWorkController {
 
             attributes.addFlashAttribute("error", bindingResult);
             attributes.addFlashAttribute("courseWork", courseWork);
-            return "redirect:/addCourseWork";
+            return "redirect:/education/addCourseWork";
         }
 
         courseWorkService.createCourseWork(courseWork);
