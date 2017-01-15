@@ -26,7 +26,7 @@
 </footer>
 
 <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}resources/js/bin/materialize.min.js"></script>
+<script type="text/javascript" src="<c:url value='/resources/js/bin/materialize.min.js'/>"></script>
 
 <script>
     $( document ).ready(function(){

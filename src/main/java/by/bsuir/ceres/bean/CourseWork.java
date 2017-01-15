@@ -6,6 +6,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import java.io.Serializable;
 import java.sql.Timestamp;
+import java.util.Date;
 
 /**
  * Created by wowru on 11/20/2016.
@@ -22,14 +23,11 @@ public class CourseWork implements Serializable {
     @Column(name = "active")
     private boolean isActive;
 
-    @Column(name = "surname")
-    private String surname;
-
-    @Column(name = "name")
-    private String name;
+    @Column(name = "studentName")
+    private String studentName;
 
     @Column(name = "topic")
-    private String topick;
+    private String topic;
 
     @Column(name = "statement")
     private String statement;
@@ -42,6 +40,12 @@ public class CourseWork implements Serializable {
 
     @Column(name = "updated_at")
     private Timestamp modificationDate;
+
+    public CourseWork() {
+        creationDate = new Timestamp(new Date().getTime());
+        modificationDate = new Timestamp(new Date().getTime());
+        setActive(true);
+    }
 
     public long getId() {
         return id;
@@ -59,28 +63,20 @@ public class CourseWork implements Serializable {
         isActive = active;
     }
 
-    public String getSurname() {
-        return surname;
+    public String getStudentName() {
+        return studentName;
     }
 
-    public void setSurname(String surname) {
-        this.surname = surname;
+    public void setStudentName(String surname) {
+        this.studentName = surname;
     }
 
-    public String getName() {
-        return name;
+    public String getTopic() {
+        return topic;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getTopick() {
-        return topick;
-    }
-
-    public void setTopick(String topick) {
-        this.topick = topick;
+    public void setTopic(String topic) {
+        this.topic = topic;
     }
 
     public String getStatement() {
