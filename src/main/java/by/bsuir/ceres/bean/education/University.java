@@ -2,6 +2,7 @@ package by.bsuir.ceres.bean.education;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -15,14 +16,13 @@ public class University implements Serializable {
     @Column(name = "name")
     private String name;
 
-    @OneToMany(cascade = CascadeType.ALL)
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinTable(
             name = "university_faculty",
             joinColumns = @JoinColumn(name = "idUniversity"),
             inverseJoinColumns = @JoinColumn(name = "idFaculty")
     )
-    private Set<Faculty> faculties;
-
+    private Set<Faculty> faculties = new HashSet<>(0);
 
     public Set<Faculty> getFaculties() {
         return faculties;
