@@ -10,6 +10,61 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
+<script>
+    $(document).ready(function () {
+        $('#university').on('change', function (e) {
+
+            var university_id = e.target.value;
+
+            $.get('/ajax-faculty?university_id=' + university_id, function(data){
+
+                $('#speciality').empty();
+                var $facultyDropdown = $('#faculty').empty();
+
+                $.each(data, function(index, facultyObj){
+
+                    $facultyDropdown.append(
+                            $("<option></option>")
+                                    .attr("value",facultyObj.id)
+                                    .text(facultyObj.name)
+                    );
+                });
+
+                $facultyDropdown.trigger('facultyChanged');
+            });
+
+            $('select').on('facultyChanged', function() {
+                $(this).material_select();
+            });
+        });
+
+        $('#faculty').on('change', function (e) {
+
+            var faculty_id = e.target.value;
+
+            $.get('/ajax-speciality?faculty_id=' + faculty_id, function(data){
+
+                var $specialityDropdown = $('#speciality_id').empty();
+
+                $.each(data, function(index, specialityObj){
+
+                    $specialityDropdown.append(
+                            $("<option></option>")
+                                    .attr("value",specialityObj.id)
+                                    .text(specialityObj.name)
+                    );
+                });
+
+                $specialityDropdown.trigger('specialityChanged');
+            });
+
+            $('select').on('specialityChanged', function() {
+                $(this).material_select();
+            });
+        });
+    });
+</script>
+
 <div class="container">
     <h3>Регистрация</h3>
 
@@ -82,8 +137,11 @@
 
         <div class="input-field">
             <i class="material-icons prefix">list</i>
-            <select id="university">
+            <select name = "university" id="university">
                 <option value="" selected>Choose your option</option>
+                <c:forEach var="univer" items="${universities}">
+                    <option value="${univer.id}">${univer.name}</option>
+                </c:forEach>
             </select>
             <label for="university">Выберите университет</label>
         </div>

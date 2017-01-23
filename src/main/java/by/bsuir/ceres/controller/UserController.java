@@ -4,6 +4,7 @@ import by.bsuir.ceres.bean.Student;
 import by.bsuir.ceres.bean.TO.RegistrationTO;
 import by.bsuir.ceres.bean.User;
 import by.bsuir.ceres.service.SecurityService;
+import by.bsuir.ceres.service.UniversityService;
 import by.bsuir.ceres.service.UserService;
 import by.bsuir.ceres.validation.UserValidator;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +28,9 @@ import javax.servlet.http.HttpSession;
 public class UserController {
 
     @Autowired
+    private UniversityService universityService;
+
+    @Autowired
     private UserService userService;
 
     @Autowired
@@ -43,6 +47,7 @@ public class UserController {
             registrationForm = new RegistrationTO();
         }
         modelAndView.addObject("registrationForm", registrationForm);
+        modelAndView.addObject("universities", universityService.getAllUniversities());
         modelAndView.addObject(BindingResult.MODEL_KEY_PREFIX + "registrationForm", modelMap.get("error"));
         return modelAndView;
     }

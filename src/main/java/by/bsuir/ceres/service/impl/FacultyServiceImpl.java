@@ -1,11 +1,13 @@
 package by.bsuir.ceres.service.impl;
 
 import by.bsuir.ceres.bean.education.Faculty;
+import by.bsuir.ceres.bean.education.University;
 import by.bsuir.ceres.dao.FacultyRepository;
 import by.bsuir.ceres.service.FacultyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -42,5 +44,12 @@ public class FacultyServiceImpl implements FacultyService {
     public void deleteFacultyById(Long id) {
 
         facultyRepository.delete(id);
+    }
+
+    @Override
+    public List<Faculty> getFacultiesByUniversity(Long universityId) {
+        University university = new University();
+        university.setId(universityId);
+        return new ArrayList<>(facultyRepository.findByUniversity(university));
     }
 }

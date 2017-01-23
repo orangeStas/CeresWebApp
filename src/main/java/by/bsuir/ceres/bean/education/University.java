@@ -16,12 +16,7 @@ public class University implements Serializable {
     @Column(name = "name")
     private String name;
 
-    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinTable(
-            name = "university_faculty",
-            joinColumns = @JoinColumn(name = "idUniversity"),
-            inverseJoinColumns = @JoinColumn(name = "idFaculty")
-    )
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "university")
     private Set<Faculty> faculties = new HashSet<>(0);
 
     public Set<Faculty> getFaculties() {

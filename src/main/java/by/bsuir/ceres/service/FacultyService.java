@@ -11,4 +11,5 @@ public interface FacultyService {
     void createFaculty(Faculty faculty);
     void updateFacultyById(Faculty faculty);
     void deleteFacultyById(Long id);
+    List<Faculty> getFacultiesByUniversity(Long universityId);
 }

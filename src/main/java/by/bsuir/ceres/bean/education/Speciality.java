@@ -2,7 +2,6 @@ package by.bsuir.ceres.bean.education;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.Set;
 
 import static javax.persistence.GenerationType.IDENTITY;
 
@@ -17,15 +16,16 @@ public class Speciality implements Serializable {
     @Column(name = "name")
     private String name;
 
-    @ManyToMany(fetch = FetchType.EAGER, mappedBy = "specialities")
-    private Set<Faculty> facultySet;
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "facultyId")
+    private Faculty faculty;
 
-    public Set<Faculty> getFacultySet() {
-        return facultySet;
+    public Faculty getFaculty() {
+        return faculty;
     }
 
-    public void setFacultySet(Set<Faculty> facultySet) {
-        this.facultySet = facultySet;
+    public void setFaculty(Faculty faculty) {
+        this.faculty = faculty;
     }
 
     public Long getId() {
