@@ -11,4 +11,5 @@ public interface SpecialityService {
     void createSpeciality(Speciality speciality);
     void updateSpecialityById(Speciality speciality);
     void deleteSpecialityById(Long id);
+    List<Speciality> getSpecialitiesByFaculty(Long facultyId);
 }

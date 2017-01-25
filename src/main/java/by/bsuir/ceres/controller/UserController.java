@@ -11,7 +11,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -40,15 +39,14 @@ public class UserController {
     private UserValidator userValidator;
 
     @RequestMapping(value = "/registration", method = RequestMethod.GET)
-    public ModelAndView registration(@ModelAttribute RegistrationTO registrationForm,
-                                     ModelMap modelMap) {
+    public ModelAndView registration(@ModelAttribute("registrationForm") RegistrationTO registrationForm) {
         ModelAndView modelAndView = new ModelAndView("registrationTemplate");
         if (registrationForm == null) {
             registrationForm = new RegistrationTO();
         }
         modelAndView.addObject("registrationForm", registrationForm);
         modelAndView.addObject("universities", universityService.getAllUniversities());
-        modelAndView.addObject(BindingResult.MODEL_KEY_PREFIX + "registrationForm", modelMap.get("error"));
+        //modelAndView.addObject(BindingResult.MODEL_KEY_PREFIX + "registrationForm", modelMap.get("error"));
         return modelAndView;
     }
 
@@ -78,7 +76,6 @@ public class UserController {
     @RequestMapping(value = "/registration", method = RequestMethod.POST)
     public String registration(@ModelAttribute("registrationForm") RegistrationTO registrationForm,
                                BindingResult bindingResult,
-                               Model model,
                                RedirectAttributes attributes) {
 
         User userForm = registrationForm.getUser();
@@ -88,13 +85,15 @@ public class UserController {
 
         if (bindingResult.hasErrors()) {
             attributes.addFlashAttribute("error", bindingResult);
-            attributes.addFlashAttribute("userForm", userForm);
+            attributes.addFlashAttribute("registrationForm", registrationForm);
             return "redirect:/registration";
         }
 
+        userForm.setStudent(studentForm);
+        studentForm.setUser(userForm);
         userService.createUser(userForm);
 
-        securityService.autologin(userForm.getEmail(), userForm.getPasswordConfirm());
+        securityService.autologin(userForm.getMail(), userForm.getPasswordConfirm());
 
         return "redirect:/index";
     }

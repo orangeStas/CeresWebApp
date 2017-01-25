@@ -1,8 +1,10 @@
 package by.bsuir.ceres.controller;
 
 import by.bsuir.ceres.bean.education.Faculty;
+import by.bsuir.ceres.bean.education.Speciality;
 import by.bsuir.ceres.bean.education.University;
 import by.bsuir.ceres.service.FacultyService;
+import by.bsuir.ceres.service.SpecialityService;
 import by.bsuir.ceres.service.UniversityService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -19,6 +21,9 @@ public class AjaxEducationController {
     @Autowired
     private FacultyService facultyService;
 
+    @Autowired
+    private SpecialityService specialityService;
+
     @RequestMapping(value = "/university/all")
     @ResponseBody
     public List<University> getAllUnivers() {
@@ -30,6 +35,12 @@ public class AjaxEducationController {
     @ResponseBody
     public List<Faculty> getFacultiesByUniversity(@PathVariable Long univerId) {
         return facultyService.getFacultiesByUniversity(univerId);
+    }
+
+    @RequestMapping(value = "/faculty/specialities/{facultyId}")
+    @ResponseBody
+    public List<Speciality> getSpecialitiesByFaculty(@PathVariable Long facultyId) {
+        return specialityService.getSpecialitiesByFaculty(facultyId);
     }
 
 }

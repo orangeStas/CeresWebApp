@@ -14,7 +14,7 @@ public class User implements Serializable {
     private Long id;
 
     @Column(name = "email")
-    private String email;
+    private String mail;
 
     @Column(name = "password")
     private String password;
@@ -25,6 +25,17 @@ public class User implements Serializable {
     @ManyToMany
     @JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"))
     private Set<Role> role;
+
+    @OneToOne(fetch = FetchType.LAZY, mappedBy = "user", cascade = CascadeType.ALL)
+    private Student student;
+
+    public Student getStudent() {
+        return student;
+    }
+
+    public void setStudent(Student student) {
+        this.student = student;
+    }
 
     public String getPasswordConfirm() {
         return passwordConfirm;
@@ -50,12 +61,12 @@ public class User implements Serializable {
         this.id = id;
     }
 
-    public String getEmail() {
-        return email;
+    public String getMail() {
+        return mail;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setMail(String email) {
+        this.mail = email;
     }
 
     public String getPassword() {
