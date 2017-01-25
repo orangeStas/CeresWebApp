@@ -1,13 +1,12 @@
 package by.bsuir.ceres.bean;
 
 import by.bsuir.ceres.bean.education.Speciality;
-import org.hibernate.annotations.*;
+import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Parameter;
 
 import javax.persistence.*;
-import javax.persistence.Entity;
-import javax.persistence.Table;
 import java.io.Serializable;
+import java.util.Set;
 
 @Entity
 @Table(name = "student")
@@ -28,6 +27,9 @@ public class Student implements Serializable {
     @Column(name = "surname")
     private String surname;
 
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "student")
+    private Set<CourseWork> courseWorks;
+
     @OneToOne(fetch = FetchType.LAZY)
     @PrimaryKeyJoinColumn
     private User user;
@@ -36,6 +38,14 @@ public class Student implements Serializable {
     @JoinColumn(name = "idSpeciality")
     private Speciality speciality;
 
+
+    public Set<CourseWork> getCourseWorks() {
+        return courseWorks;
+    }
+
+    public void setCourseWorks(Set<CourseWork> courseWorks) {
+        this.courseWorks = courseWorks;
+    }
 
     public User getUser() {
         return user;

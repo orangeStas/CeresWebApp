@@ -6,8 +6,11 @@ import by.bsuir.ceres.bean.statement.CourseWorkStatement;
 import by.bsuir.ceres.service.CourseWorkService;
 import by.bsuir.ceres.service.DocumentGeneratorService;
 import by.bsuir.ceres.service.MenuService;
+import by.bsuir.ceres.service.UserService;
 import com.itextpdf.text.DocumentException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -36,6 +39,9 @@ public class AddCourseWorkController {
 
     @Autowired
     private CourseWorkService courseWorkService;
+
+    @Autowired
+    private UserService userService;
 
     @Autowired
     private DocumentGeneratorService documentGeneratorService;
@@ -107,6 +113,10 @@ public class AddCourseWorkController {
         } catch (DocumentException | IOException e) {
             e.printStackTrace();
         }
+
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        by.bsuir.ceres.bean.User user1 = userService.findByEmail(user.getUsername());
+        courseWork.setStudent(user1.getStudent());
 
         courseWorkService.createCourseWork(courseWork);
 

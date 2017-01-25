@@ -1,9 +1,6 @@
 package by.bsuir.ceres.bean;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.io.Serializable;
 import java.sql.Timestamp;
 import java.util.Date;
@@ -41,10 +38,22 @@ public class CourseWork implements Serializable {
     @Column(name = "updated_at")
     private Timestamp modificationDate;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "studentId")
+    private Student student;
+
     public CourseWork() {
         creationDate = new Timestamp(new Date().getTime());
         modificationDate = new Timestamp(new Date().getTime());
         setActive(true);
+    }
+
+    public Student getStudent() {
+        return student;
+    }
+
+    public void setStudent(Student student) {
+        this.student = student;
     }
 
     public long getId() {
