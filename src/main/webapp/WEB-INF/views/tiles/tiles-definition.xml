@@ -39,4 +39,9 @@
         <put-attribute name="content" value="/WEB-INF/views/pages/addCourseWork.jsp" />
     </definition>
 
+    <definition name="eduTemplate" template="/WEB-INF/views/template/edu_template.jsp">
+        <put-attribute name="navigation" value="/WEB-INF/views/layouts/default/header.jsp" />
+        <put-attribute name="left_menu" value="/WEB-INF/views/pages/left_menu.jsp"/>
+        <put-attribute name="content" value="/WEB-INF/views/pages/about.jsp"/>
+    </definition>
 </tiles-definitions>
