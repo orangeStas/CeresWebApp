@@ -1,6 +1,8 @@
 package by.bsuir.ceres.bean;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "project")
@@ -19,7 +21,44 @@ public class Project {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "author_id")
-    private User user;
+    private Student author;
+
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(name = "project_student", joinColumns = {
+            @JoinColumn(name = "project_id")
+    }, inverseJoinColumns = {
+            @JoinColumn(name = "student_id")
+    })
+    private Set<Student> participants = new HashSet<>();
+
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(name = "project_tag", joinColumns = {
+            @JoinColumn(name = "project_id")
+    }, inverseJoinColumns = {
+            @JoinColumn(name = "tag_id")
+    })
+    private Set<Tag> tags = new HashSet<>();
+
+    @Column(name = "count_participants")
+    private int countParticipants;
+
+    @Column(name = "repository_url")
+    private String repositoryUrl;
+
+    @OneToOne(fetch = FetchType.LAZY, mappedBy = "project", cascade = CascadeType.ALL)
+    private Chat chat;
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "project")
+    private Set<ProjectStatus> projectStatuses = new HashSet<>();
+
+
+    public Chat getChat() {
+        return chat;
+    }
+
+    public void setChat(Chat chat) {
+        this.chat = chat;
+    }
 
     public Long getId() {
         return id;
@@ -45,11 +84,51 @@ public class Project {
         this.description = description;
     }
 
-    public User getUser() {
-        return user;
+    public Student getAuthor() {
+        return author;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setAuthor(Student author) {
+        this.author = author;
+    }
+
+    public Set<Student> getParticipants() {
+        return participants;
+    }
+
+    public void setParticipants(Set<Student> participants) {
+        this.participants = participants;
+    }
+
+    public Set<Tag> getTags() {
+        return tags;
+    }
+
+    public void setTags(Set<Tag> tags) {
+        this.tags = tags;
+    }
+
+    public int getCountParticipants() {
+        return countParticipants;
+    }
+
+    public void setCountParticipants(int countParticipants) {
+        this.countParticipants = countParticipants;
+    }
+
+    public String getRepositoryUrl() {
+        return repositoryUrl;
+    }
+
+    public void setRepositoryUrl(String repositoryUrl) {
+        this.repositoryUrl = repositoryUrl;
+    }
+
+    public Set<ProjectStatus> getProjectStatuses() {
+        return projectStatuses;
+    }
+
+    public void setProjectStatuses(Set<ProjectStatus> projectStatuses) {
+        this.projectStatuses = projectStatuses;
     }
 }
