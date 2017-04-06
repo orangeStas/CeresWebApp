@@ -48,6 +48,9 @@ public class Project {
     @OneToOne(fetch = FetchType.LAZY, mappedBy = "project", cascade = CascadeType.ALL)
     private Chat chat;
 
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "project")
+    private Set<ProjectStatus> projectStatuses = new HashSet<>();
+
 
     public Chat getChat() {
         return chat;
@@ -119,5 +122,13 @@ public class Project {
 
     public void setRepositoryUrl(String repositoryUrl) {
         this.repositoryUrl = repositoryUrl;
+    }
+
+    public Set<ProjectStatus> getProjectStatuses() {
+        return projectStatuses;
+    }
+
+    public void setProjectStatuses(Set<ProjectStatus> projectStatuses) {
+        this.projectStatuses = projectStatuses;
     }
 }

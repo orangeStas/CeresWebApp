@@ -1,10 +1,8 @@
 package by.bsuir.ceres.controller;
 
-import by.bsuir.ceres.bean.Chat;
-import by.bsuir.ceres.bean.Project;
-import by.bsuir.ceres.bean.Student;
-import by.bsuir.ceres.bean.Tag;
+import by.bsuir.ceres.bean.*;
 import by.bsuir.ceres.service.ProjectService;
+import by.bsuir.ceres.service.ProjectStatusService;
 import by.bsuir.ceres.service.TagService;
 import by.bsuir.ceres.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +12,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpServletRequest;
+import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Date;
+import java.util.List;
 
 @Controller
 @RequestMapping("/education/project")
@@ -27,6 +30,9 @@ public class ProjectController {
 
     @Autowired
     private TagService tagService;
+
+    @Autowired
+    private ProjectStatusService projectStatusService;
 
     @RequestMapping("/openCreateProject")
     public ModelAndView getCreateProjectPage(@ModelAttribute("project")Project project, @ModelAttribute("tags")ArrayList<Tag> tags) {
@@ -61,7 +67,10 @@ public class ProjectController {
         ModelAndView modelAndView = new ModelAndView("projectTemplate");
         Project project = projectService.loadById(projectId);
 
+        List<ProjectStatus> projectStatusList = new ArrayList<>(project.getProjectStatuses());
+        Collections.sort(projectStatusList, (s1, s2) -> (-1) * s1.getTime().compareTo(s2.getTime()));
         modelAndView.addObject("userInProject", isUserInProject(project));
+        modelAndView.addObject("statuses", projectStatusList);
 
         modelAndView.addObject("project", project);
         return modelAndView;
@@ -79,6 +88,22 @@ public class ProjectController {
         projectService.createProject(project);
 
         return "redirect:/education/project/" + project.getId();
+    }
+
+    @RequestMapping(value = "/addStatus", method = RequestMethod.POST)
+    public String addStatus(HttpServletRequest request) {
+        String status = request.getParameter("status_text");
+        Long projectId = Long.valueOf(request.getParameter("project_id"));
+        Project project = new Project();
+        project.setId(projectId);
+        ProjectStatus projectStatus = new ProjectStatus();
+        projectStatus.setProject(project);
+        projectStatus.setStatus(status);
+        projectStatus.setTime(new Timestamp(new Date().getTime()));
+
+        projectStatusService.addStatus(projectStatus);
+
+        return "redirect:/education/project/" + projectId;
     }
 
     private boolean isUserInProject(Project project) {
