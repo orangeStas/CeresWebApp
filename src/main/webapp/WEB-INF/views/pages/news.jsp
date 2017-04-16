@@ -1,5 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%--
   Created by IntelliJ IDEA.
   User: stas-
@@ -20,7 +21,9 @@
                     <img class="activator" src="resources/images/news/${newsList[loop.index].imageFileName}">
                 </div>
                 <div class="card-content">
-                    <p>${newsList[loop.index].modificationDate}</p>
+                    <p><fmt:formatDate type="both"
+                                       dateStyle="short" timeStyle="short"
+                                       value="${newsList[loop.index].modificationDate}" /></p>
                             <span class="card-title activator grey-text text-darken-4">${newsList[loop.index].title}<i
                                     class="material-icons right">more_vert</i></span>
                 </div>
@@ -37,7 +40,9 @@
                         <img class="activator" src="resources/images/news/${newsList[loop.index + 1].imageFileName}">
                     </div>
                     <div class="card-content">
-                        <p>${newsList[loop.index + 1].modificationDate}</p>
+                        <p><fmt:formatDate type="both"
+                                           dateStyle="short" timeStyle="short"
+                                           value="${newsList[loop.index].modificationDate}" /></p>
                                 <span class="card-title activator grey-text text-darken-4">${newsList[loop.index + 1].title}<i
                                         class="material-icons right">more_vert</i></span>
                     </div>
