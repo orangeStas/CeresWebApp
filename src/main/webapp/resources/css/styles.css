@@ -6163,6 +6163,8 @@ nav .brand-logo {
 body {
   display: flex;
   min-height: 100vh;
+  min-width: 1000px;
+  width: auto !important;
   flex-direction: column; }
   body .wrapper {
     flex: 1 0 auto; }
@@ -6185,3 +6187,11 @@ body {
       padding: 15px 5px 5px 5px; }
 
 /*# sourceMappingURL=styles.css.map */
+
+.clear-list{
+  list-style-type: none!important;
+}
+
+.zero-left-padding {
+  padding-left: 0px!important;
+}

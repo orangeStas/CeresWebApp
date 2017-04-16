@@ -14,8 +14,9 @@
 <spring:url value="${requestScope['javax.servlet.forward.request_uri']}" var="currUrl"/>
 
 <nav class="nav-wrapper cyan darken-4">
-    <a href="/" class="brand-logo">CERES PROJECT</a>
-    <ul class="right hide-on-med-and-down">
+    <a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a>
+    <a href="/" class="brand-logo hide-on-med-and-down">CERES PROJECT</a>
+    <ul class="right">
 
         <c:forEach var="item" items="${topMenu}">
             <c:if test="${fn:startsWith(currUrl, item.url)}">
@@ -31,39 +32,15 @@
             <li><a href="<c:url value="/login"/>" class="waves-effect waves-light btn">Войти</a></li>
         </c:if>
         <c:if test="${not empty pageContext.request.userPrincipal.name}">
+            <li><a href="#!" class="dropdown-button" data-activates="dropdown1">Образование</a></li>
             <li><a href="/login?logout"
                    class="waves-effect waves-light red accent-2 btn">${pageContext.request.userPrincipal.name}</a></li>
         </c:if>
 
-
-        <%--@if(Auth::check())
-        <li><a href="/auth/logout" class="waves-effect waves-light btn red accent-2">Выйти</a></li>
-        @else
-        <li><a href="/auth/login" class="waves-effect waves-light btn">Войти</a></li>
-        @endif--%>
     </ul>
-
-    <ul class="side-nav" id="mobile-nav">
-
-        <c:forEach var="item" items="${topMenu}">
-            <c:if test="${fn:startsWith(currUrl, item.url)}">
-                <li class="active"><a href="${item.url}">${item.title}</a></li>
-            </c:if>
-
-            <c:if test="${not fn:startsWith(currUrl, item.url)}">
-                <li><a href="${item.url}">${item.title}</a></li>
-            </c:if>
-        </c:forEach>
-
-
-        <li><a href="<c:url value="/auth/login"/>" class="waves-effect waves-light">Войти</a></li>
-
-        <%--@if(Auth::check())
-
-        @else
-        <li><a href="/auth/login" class="waves-effect waves-light">Войти</a></li>
-        @endif--%>
-    </ul>
-
-    <a href="#" data-activates="mobile-nav" class="button-collapse"><i class="material-icons">menu</i></a>
 </nav>
+
+<ul class="dropdown-content" id="dropdown1" >
+    <li><a href="#!">First Sidebar Link</a></li>
+    <li><a href="#!">Second Sidebar Link</a></li>
+</ul>

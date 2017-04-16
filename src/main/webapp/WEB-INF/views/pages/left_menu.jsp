@@ -7,7 +7,7 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
-<ul id="slide-out" class="side-nav">
+<ul class="side-nav" id="slide-out" >
     <li><a href="#!">First Sidebar Link</a></li>
     <li><a href="#!">Second Sidebar Link</a></li>
     <li class="no-padding">

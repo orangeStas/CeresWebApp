@@ -23,7 +23,7 @@
 <footer class="page-footer cyan darken-4">
     <div class="footer-copyright">
         <div class="container center">
-            © 2016 Ceres Project
+            © 2017 Ceres Project
         </div>
     </div>
 </footer>
@@ -41,6 +41,12 @@
             selectMonths: true, // Creates a dropdown to control month
             selectYears: 15, // Creates a dropdown of 15 years to control year
             format: 'dd.mm.yyyy'
+        });
+        $(".dropdown-button").dropdown({
+            hover: true,
+            belowOrigin: true,
+            constrainWidth: false,
+            alignment:  'right'
         });
     });
 </script>

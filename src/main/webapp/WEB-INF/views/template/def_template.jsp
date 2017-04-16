@@ -20,7 +20,7 @@
 <footer class="page-footer cyan darken-4">
     <div class="footer-copyright">
         <div class="container center">
-            © 2016 Ceres Project
+            © 2017 Ceres Project
         </div>
     </div>
 </footer>
@@ -33,6 +33,12 @@
         $('.button-collapse').sideNav();
         $('.parallax').parallax();
         $('select').material_select();
+        $(".dropdown-button").dropdown({
+            hover: true,
+            belowOrigin: true,
+            constrainWidth: false,
+            alignment:  'right'
+        });
 
         $('.datepicker').pickadate({
             selectMonths: true, // Creates a dropdown to control month
