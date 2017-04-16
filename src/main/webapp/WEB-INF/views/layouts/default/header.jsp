@@ -32,9 +32,15 @@
             <li><a href="<c:url value="/login"/>" class="waves-effect waves-light btn">Войти</a></li>
         </c:if>
         <c:if test="${not empty pageContext.request.userPrincipal.name}">
+            <li><a href="#!" class="dropdown-button" data-activates="dropdown1">Образование</a></li>
             <li><a href="/login?logout"
                    class="waves-effect waves-light red accent-2 btn">${pageContext.request.userPrincipal.name}</a></li>
         </c:if>
 
     </ul>
 </nav>
+
+<ul class="dropdown-content" id="dropdown1" >
+    <li><a href="#!">First Sidebar Link</a></li>
+    <li><a href="#!">Second Sidebar Link</a></li>
+</ul>

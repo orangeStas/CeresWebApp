@@ -25,21 +25,16 @@
 
             <div class="card white hoverable">
                 <div class="card-content">
-
-                    <span class="card-title teal-text">
-                                   Тэги проекта
-                    </span>
+                    <span class="card-title teal-text">Тэги проекта</span>
                     <c:forEach var="tag" items="${project.tags}">
-                        <div class="chip">
-                                ${tag.name}
-                        </div>
+                        <div class="chip">${tag.name}</div>
                     </c:forEach>
                 </div>
             </div>
 
             <h5 class="teal-text text-darken-1">Дополнительная информация:</h5>
-            <ul class="collapsible hoverable" data-collapsible="accordion">
-                <li>
+            <ul class="collapsible hoverable clear-list" data-collapsible="accordion">
+                <li class="clear-list">
                     <div class="collapsible-header"><i
                             class="material-icons">perm_identity</i>Автор: ${project.author.name} ${project.author.surname}
                     </div>
@@ -49,19 +44,17 @@
                         <p>Cпециальность: ${project.author.speciality.name}</p>
                     </div>
                 </li>
-                <li>
+                <li class="clear-list">
                     <div class="collapsible-header"><i class="material-icons">supervisor_account</i>Количество
                         участников: ${fn:length(project.participants) + 1}</div>
                     <div class="collapsible-body">
                         <p>Максимальное количество участников: ${project.countParticipants}</p>
                     </div>
                 </li>
-                <li>
+                <li class="clear-list">
                     <div class="collapsible-header"><i class="material-icons">info</i>Репозиторий</div>
                     <div class="collapsible-body">
-                        <p>
-                            <a href="${project.repositoryUrl}">${project.repositoryUrl}</a>
-                        </p>
+                        <p><a href="${project.repositoryUrl}">${project.repositoryUrl}</a></p>
                     </div>
                 </li>
             </ul>
@@ -90,16 +83,13 @@
         <div class="col s6">
 
             <ul class="collection with-header hoverable">
-                <li class="collection-header">
-                    <h5 class="teal-text text-darken-1">Статус проекта</h5>
-                </li>
+                <h5 class="teal-text" style="padding-top: 20px;">Статус проекта</h5>
                 <c:forEach var="status" items="${statuses}">
-                    <li class="collection-item">
-                        <div>
-                                ${status.status}
-                            <a class="secondary-content"><fmt:formatDate type="both" dateStyle="short" timeStyle="short"
-                                                                         value="${status.time}"/></a>
-                        </div>
+                    <li class="collection-item row zero-left-padding clear-list">
+                        <span class="col s9">${status.status}</span>
+                        <span class="col s3 secondary-content">
+                            <fmt:formatDate type="both" dateStyle="short" timeStyle="short" value="${status.time}"/>
+                        </span>
                     </li>
                 </c:forEach>
             </ul>
@@ -121,11 +111,7 @@
         <div class="col s6">
             <div class="card white hoverable">
                 <div class="card-content">
-
-                    <span class="card-title teal-text">
-                                   Состав проекта
-                    </span>
-
+                    <h5 class="teal-text">Состав проекта</h5>
                     <c:forEach var="student" items="${project.participants}">
                         <div class="card teal darken-1 hoverable">
                             <div class="card-content">
@@ -137,7 +123,7 @@
                                 </p>
                             </div>
                             <div class="card-action">
-                                <a href="#">Профиль</a>
+                                <a href="/education/profile/${student.id}">Профиль</a>
                             </div>
                         </div>
                     </c:forEach>

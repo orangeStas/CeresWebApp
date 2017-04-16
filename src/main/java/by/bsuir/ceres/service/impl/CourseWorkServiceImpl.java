@@ -1,11 +1,13 @@
 package by.bsuir.ceres.service.impl;
 
 import by.bsuir.ceres.bean.CourseWork;
+import by.bsuir.ceres.bean.Student;
 import by.bsuir.ceres.dao.CourseWorkRepository;
 import by.bsuir.ceres.service.CourseWorkService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -48,4 +50,10 @@ public class CourseWorkServiceImpl implements CourseWorkService {
         courseWorkRepository.delete(id);
     }
 
+    @Override
+    public List<CourseWork> getCourseWorksByStudent(Long studentId) {
+        Student student = new Student();
+        student.setId(studentId);
+        return new ArrayList<>(courseWorkRepository.findByStudent(student));
+    }
 }

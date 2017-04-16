@@ -99,7 +99,7 @@
 <footer class="page-footer cyan darken-4">
     <div class="footer-copyright">
         <div class="container center">
-            © 2016 Ceres Project
+            © 2017 Ceres Project
         </div>
     </div>
 </footer>

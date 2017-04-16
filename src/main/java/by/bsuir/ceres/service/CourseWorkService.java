@@ -14,4 +14,5 @@ public interface CourseWorkService {
     void createCourseWork(CourseWork courseWork);
     void updateCourseWorkById(CourseWork courseWork);
     void deleteCourseWorkById(Long id);
+    List<CourseWork> getCourseWorksByStudent(Long studentId);
 }
