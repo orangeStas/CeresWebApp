@@ -2,14 +2,15 @@ package by.bsuir.ceres.service.impl;
 
 import by.bsuir.ceres.bean.Project;
 import by.bsuir.ceres.bean.Student;
-import by.bsuir.ceres.bean.User;
 import by.bsuir.ceres.dao.ProjectRepository;
 import by.bsuir.ceres.service.ProjectService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Service
 public class ProjectServiceImpl implements ProjectService {
@@ -31,6 +32,8 @@ public class ProjectServiceImpl implements ProjectService {
     public List<Project> getProjectsByStudent(Long studentId) {
         Student student = new Student();
         student.setId(studentId);
-        return new ArrayList<>(projectRepository.findByAuthor(student));
+        Set<Student> studentSet = new HashSet<>();
+        studentSet.add(student);
+        return new ArrayList<>(projectRepository.findByAuthorOrParticipants(student, studentSet));
     }
 }

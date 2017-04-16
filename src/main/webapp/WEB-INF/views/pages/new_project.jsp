@@ -24,7 +24,7 @@
         <div class="row">
             <div class="input-field col s12">
                 <i class="material-icons prefix">subject</i>
-                <form:textarea path="description" cssClass="materialize-textarea" id="descId" required="required" placeholder="Описание проекта"/>
+                <form:textarea path="description" cssClass="materialize-textarea" id="descId" required="required"/>
                 <label for="descId">Описание</label>
             </div>
         </div>
