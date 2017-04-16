@@ -106,6 +106,17 @@ public class ProjectController {
         return "redirect:/education/project/" + projectId;
     }
 
+    /*@RequestMapping(value = "/all", method = RequestMethod.GET)
+    public ModelAndView getAllProjects() {
+        List<Project> projects = projectService.getAll();
+
+        ModelAndView modelAndView = new ModelAndView("allProjectsTemplate");
+
+        modelAndView.addObject("projects", projects);
+
+        return modelAndView;
+    }*/
+
     private boolean isUserInProject(Project project) {
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         by.bsuir.ceres.bean.User user1 = userService.findByEmail(user.getUsername());
