@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: wowru
@@ -37,24 +38,29 @@
         <div class="col s6">
             <div class="card white hoverable">
                 <div class="card-content">
-                    <h4 class="teal-text">Курсовые работы</h4>
+                    <c:if test="${not empty student.courseWorks}">
+                        <h4 class="teal-text">Курсовые работы</h4>
 
-                    <c:forEach var="courseWork" items="${student.courseWorks}">
-                        <div class="card teal darken-1 hoverable">
-                            <div class="card-content">
-                                <span class="card-title white-text">
-                                    ${courseWork.topic}
-                                </span>
-                                <p class="white-text" style="margin-top: 10px">
-                                    ${courseWork.statement}
-                                </p>
+                        <c:forEach var="courseWork" items="${student.courseWorks}">
+                            <div class="card teal darken-1 hoverable">
+                                <div class="card-content">
+                                    <span class="card-title white-text">
+                                        ${courseWork.topic}
+                                    </span>
+                                    <p class="white-text" style="margin-top: 10px">
+                                        ${courseWork.statement}
+                                    </p>
+                                </div>
+                                <div class="card-action">
+                                    <a href="#">Подробнее...</a>
+                                </div>
                             </div>
-                            <div class="card-action">
-                                <a href="#">Подробнее...</a>
-                            </div>
-                        </div>
-                    </c:forEach>
+                        </c:forEach>
+                    </c:if>
 
+                    <c:if test="${empty student.courseWorks}">
+                        <h4 class="teal-text">Нет загруженных работ</h4>
+                    </c:if>
                 </div>
             </div>
         </div>
@@ -62,24 +68,29 @@
         <div class="col s6">
             <div class="card white hoverable">
                 <div class="card-content">
-                    <h4 class="teal-text">Активные проекты</h4>
+                    <c:if test="${not empty projects}">
+                        <h4 class="teal-text">Активные проекты</h4>
 
-                    <c:forEach var="project" items="${projects}">
-                        <div class="card teal darken-1 hoverable">
-                            <div class="card-content">
-                                <span class="card-title white-text">
-                                        ${project.title}
-                                </span>
-                                <p class="white-text" style="margin-top: 10px">
-                                        ${project.countParticipants}
-                                </p>
+                        <c:forEach var="project" items="${projects}">
+                            <div class="card teal darken-1 hoverable">
+                                <div class="card-content">
+                                    <span class="card-title white-text">
+                                            ${project.title}
+                                    </span>
+                                    <p class="white-text" style="margin-top: 10px">
+                                            ${project.countParticipants}
+                                    </p>
+                                </div>
+                                <div class="card-action">
+                                    <a href="/education/project/${project.id}">Проект</a>
+                                </div>
                             </div>
-                            <div class="card-action">
-                                <a href="/education/project/${project.id}">Проект</a>
-                            </div>
-                        </div>
-                    </c:forEach>
+                        </c:forEach>
+                    </c:if>
 
+                    <c:if test="${empty projects}">
+                        <h4 class="teal-text">Нет активных проектов</h4>
+                    </c:if>
                 </div>
             </div>
         </div>

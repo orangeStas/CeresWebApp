@@ -1,7 +1,6 @@
 package by.bsuir.ceres.controller;
 
 import by.bsuir.ceres.bean.*;
-import by.bsuir.ceres.service.CourseWorkService;
 import by.bsuir.ceres.service.MenuService;
 import by.bsuir.ceres.service.ProjectService;
 import by.bsuir.ceres.service.UserService;
@@ -11,7 +10,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -37,9 +35,11 @@ public class ProfileController {
         Student student = user.getStudent();
 
         List<Project> projects = projectService.getProjectsByStudent(student.getId());
+        List<Menu> topMenu = menuService.getTopMenu();
 
         modelAndView.addObject("student", student);
         modelAndView.addObject("projects", projects);
+        modelAndView.addObject("topMenu", topMenu);
 
         return modelAndView;
     }

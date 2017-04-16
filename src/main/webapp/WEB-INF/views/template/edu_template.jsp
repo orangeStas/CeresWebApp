@@ -6,7 +6,6 @@
 <head>
     <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="<c:url value="/resources/css/styles.css"/>" rel="stylesheet">
-    <link type="text/css" rel="stylesheet" href="<c:url value="/resources/css/materialize.min.css"/>" media="screen,projection"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta charset="utf-8">
 </head>
@@ -14,8 +13,6 @@
 <div class="wrapper">
 
     <tiles:insertAttribute name="navigation"/>
-
-    <tiles:insertAttribute name="left_menu"/>
 
     <tiles:insertAttribute name="content"/>
 </div>
