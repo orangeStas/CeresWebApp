@@ -67,4 +67,10 @@
         <put-attribute name="navigation" value="/WEB-INF/views/layouts/default/header.jsp"/>
         <put-attribute name="content" value="/WEB-INF/views/pages/chat.jsp" />
     </definition>
+
+    <definition name="allProjectsTemplate" template="/WEB-INF/views/template/edu_template.jsp">
+        <put-attribute name="navigation" value="/WEB-INF/views/layouts/default/header.jsp" />
+        <put-attribute name="left_menu" value=""/>
+        <put-attribute name="content" value="/WEB-INF/views/pages/all_projects.jsp"/>
+    </definition>
 </tiles-definitions>
