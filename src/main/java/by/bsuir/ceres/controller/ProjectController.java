@@ -57,7 +57,7 @@ public class ProjectController {
         by.bsuir.ceres.bean.User user1 = userService.findByEmail(user.getUsername());
 
         project.setAuthor(user1.getStudent());
-        project.setChat(new Chat());
+        project.setChat(new Chat(){{setProject(project);}});
         Project project1 = projectService.createProject(project);
         return "redirect:/education/project/" + project1.getId();
     }
