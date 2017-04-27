@@ -6,7 +6,6 @@
 <head>
     <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="<c:url value="/resources/css/styles.css"/>" rel="stylesheet">
-    <link type="text/css" rel="stylesheet" href="<c:url value="/resources/css/materialize.min.css"/>" media="screen,projection"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta charset="utf-8">
 </head>
@@ -14,8 +13,6 @@
 <div class="wrapper">
 
     <tiles:insertAttribute name="navigation"/>
-
-    <tiles:insertAttribute name="left_menu"/>
 
     <tiles:insertAttribute name="content"/>
 </div>
@@ -30,7 +27,7 @@
 
 <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 <script type="text/javascript" src="<c:url value='/resources/js/bin/materialize.min.js'/>"></script>
-
+<script type="text/javascript" src="<c:url value='/resources/js/imageChanger.js'/>"></script>
 <script>
     $( document ).ready(function(){
         $('.button-collapse').sideNav();
@@ -48,6 +45,7 @@
             constrainWidth: false,
             alignment:  'right'
         });
+        $('.modal').modal();
     });
 </script>
 </body>

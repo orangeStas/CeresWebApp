@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
 
 /**
@@ -20,12 +21,15 @@ public class IndexController {
     private MenuService menuService;
 
     @RequestMapping("/index")
-    public ModelAndView getIndexPage(@ModelAttribute("topMenu")ArrayList<Menu> topMenu) {
+    public ModelAndView getIndexPage(@ModelAttribute("topMenu")ArrayList<Menu> topMenu,
+                                     HttpServletRequest request) {
 
         ModelAndView modelAndView = new ModelAndView("indexTemplate");
 
         topMenu = (ArrayList<Menu>) menuService.getTopMenu();
         modelAndView.addObject("topMenu", topMenu);
+
+        request.getSession().setAttribute("menu", topMenu);
 
         return modelAndView;
     }

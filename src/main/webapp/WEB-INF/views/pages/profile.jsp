@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: wowru
@@ -5,7 +6,7 @@
   Time: 12:50 AM
   To change this template use File | Settings | File Templates.
 --%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <div class="container">
     <div class="row">
@@ -14,7 +15,9 @@
                 <div class="card-content white-text">
                     <div class="row">
                         <div class="col s3">
-                            <img width="230" style="margin-top: 20px;" src="https://upload.wikimedia.org/wikipedia/commons/9/9a/%D0%9D%D0%B5%D1%82_%D1%84%D0%BE%D1%82%D0%BE.png" alt="profile-image" />
+                            <a href="#image-changer">
+                                <img width="230" class="circle" style="margin-top: 20px;" src="https://upload.wikimedia.org/wikipedia/commons/9/9a/%D0%9D%D0%B5%D1%82_%D1%84%D0%BE%D1%82%D0%BE.png" alt="profile-image" />
+                            </a>
                         </div>
                         <div class="col s9">
                             <h4>${student.surname} ${student.name} ${student.middleName}</h4>
@@ -24,6 +27,7 @@
                                 <p class="row"><b class="col s3">Факультет:</b> ${student.speciality.faculty.name}</p>
                                 <p class="row"><b class="col s3">Специальность:</b> ${student.speciality.name}</p>
                             </div>
+                            <br>
                             <div>
                                 <h5>Контакты</h5>
                                 <p class="row"><b class="col s3">E-mail:</b> ${student.user.mail}</p>
@@ -38,24 +42,32 @@
         <div class="col s6">
             <div class="card white hoverable">
                 <div class="card-content">
-                    <h4 class="teal-text">Курсовые работы</h4>
+                    <c:if test="${not empty student.courseWorks}">
+                        <h4 class="teal-text">Курсовые работы</h4>
 
-                    <c:forEach var="courseWork" items="${student.courseWorks}">
-                        <div class="card teal darken-1 hoverable">
-                            <div class="card-content">
-                                <span class="card-title white-text">
-                                    ${courseWork.topic}
-                                </span>
-                                <p class="white-text" style="margin-top: 10px">
-                                    ${courseWork.statement}
-                                </p>
+                        <c:forEach var="courseWork" items="${student.courseWorks}">
+                            <div class="card teal darken-1 hoverable">
+                                <div class="card-content">
+                                    <span class="card-title white-text">
+                                        Тема работы: "${courseWork.topic}"
+                                    </span>
+                                    <p class="white-text" style="margin-top: 10px">
+                                        Дата добаления:  <fmt:formatDate type="both"
+                                                         dateStyle="short" timeStyle="short"
+                                                         value="${courseWork.modificationDate}" />
+                                    </p>
+                                </div>
+                                <div class="card-action">
+                                    <a href="/files/${courseWork.statement}">Пояснительная записка</a>
+                                    <a href="/files/${courseWork.source}" class="right">Исходный код</a>
+                                </div>
                             </div>
-                            <div class="card-action">
-                                <a href="#">Подробнее...</a>
-                            </div>
-                        </div>
-                    </c:forEach>
+                        </c:forEach>
+                    </c:if>
 
+                    <c:if test="${empty student.courseWorks}">
+                        <h4 class="teal-text">Нет загруженных работ</h4>
+                    </c:if>
                 </div>
             </div>
         </div>
@@ -63,26 +75,54 @@
         <div class="col s6">
             <div class="card white hoverable">
                 <div class="card-content">
-                    <h4 class="teal-text">Активные проекты</h4>
+                    <c:if test="${not empty projects}">
+                        <h4 class="teal-text">Активные проекты</h4>
 
-                    <c:forEach var="project" items="${projects}">
-                        <div class="card teal darken-1 hoverable">
-                            <div class="card-content">
-                                <span class="card-title white-text">
-                                        ${project.title}
-                                </span>
-                                <p class="white-text" style="margin-top: 10px">
-                                        ${project.countParticipants}
-                                </p>
+                        <c:forEach var="project" items="${projects}">
+                            <div class="card teal darken-1 hoverable">
+                                <div class="card-content">
+                                    <span class="card-title white-text">
+                                            ${project.title}
+                                    </span>
+                                    <p class="white-text" style="margin-top: 10px">
+                                            ${project.description}
+                                    </p>
+                                </div>
+                                <div class="card-action">
+                                    <a href="/education/project/${project.id}">Страница проекта</a>
+                                </div>
                             </div>
-                            <div class="card-action">
-                                <a href="/education/project/${project.id}">Проект</a>
-                            </div>
-                        </div>
-                    </c:forEach>
+                        </c:forEach>
+                    </c:if>
 
+                    <c:if test="${empty projects}">
+                        <h4 class="teal-text">Нет активных проектов</h4>
+                    </c:if>
                 </div>
             </div>
         </div>
     </div>
+</div>
+
+<!-- Modal view -->
+
+<div id="image-changer" style="width: 25%" class="modal">
+    <form action="#">
+        <div class="modal-content">
+            <h4>Изменить фотографию</h4>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/9/9a/%D0%9D%D0%B5%D1%82_%D1%84%D0%BE%D1%82%D0%BE.png" alt="image" id="blah" style="width: 100%"/>
+
+        </div>
+        <div class="modal-footer">
+
+            <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Отмена</a>
+            <button type="submit" class="modal-action modal-close waves-effect waves-green btn-flat">Ок</button>
+            <span class="file-field left" style="margin-top: -6px; margin-left: 20px;">
+                <div class="btn modal-action waves-effect waves-green btn-flat">
+                    <span>Файл</span>
+                    <input type="file" onchange="readURL(this);" />
+                </div>
+            </span>
+        </div>
+    </form>
 </div>

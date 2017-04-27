@@ -32,7 +32,7 @@
             <li><a href="<c:url value="/login"/>" class="waves-effect waves-light btn">Войти</a></li>
         </c:if>
         <c:if test="${not empty pageContext.request.userPrincipal.name}">
-            <li><a href="#!" class="dropdown-button" data-activates="dropdown1">Образование</a></li>
+            <li><a href="#!" class="dropdown-button" data-activates="education-dropdown">Образование</a></li>
             <li><a href="/login?logout"
                    class="waves-effect waves-light red accent-2 btn">выход</a></li>
         </c:if>
@@ -40,7 +40,7 @@
     </ul>
 </nav>
 
-<ul class="dropdown-content" id="dropdown1" >
-    <li><a href="#!">First Sidebar Link</a></li>
-    <li><a href="#!">Second Sidebar Link</a></li>
+<ul class="dropdown-content" id="education-dropdown" >
+    <li><a href="/education/profile/<%= session.getAttribute("userId")%>">Мой профиль</a></li>
+    <li><a href="/education/projects/">Мои проекты</a></li>
 </ul>
