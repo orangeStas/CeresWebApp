@@ -36,4 +36,9 @@ public class ProjectServiceImpl implements ProjectService {
         studentSet.add(student);
         return new ArrayList<>(projectRepository.findByAuthorOrParticipants(student, studentSet));
     }
+
+    @Override
+    public List<Project> getAll() {
+        return (List<Project>) projectRepository.findAll();
+    }
 }

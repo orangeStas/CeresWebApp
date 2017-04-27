@@ -34,7 +34,7 @@
         <c:if test="${not empty pageContext.request.userPrincipal.name}">
             <li><a href="#!" class="dropdown-button" data-activates="education-dropdown">Образование</a></li>
             <li><a href="/login?logout"
-                   class="waves-effect waves-light red accent-2 btn">${pageContext.request.userPrincipal.name}</a></li>
+                   class="waves-effect waves-light red accent-2 btn">выход</a></li>
         </c:if>
 
     </ul>

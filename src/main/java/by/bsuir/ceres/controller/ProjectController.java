@@ -57,7 +57,7 @@ public class ProjectController {
         by.bsuir.ceres.bean.User user1 = userService.findByEmail(user.getUsername());
 
         project.setAuthor(user1.getStudent());
-        project.setChat(new Chat());
+        project.setChat(new Chat(){{setProject(project);}});
         Project project1 = projectService.createProject(project);
         return "redirect:/education/project/" + project1.getId();
     }
@@ -106,16 +106,18 @@ public class ProjectController {
         return "redirect:/education/project/" + projectId;
     }
 
-    /*@RequestMapping(value = "/all", method = RequestMethod.GET)
+    @RequestMapping(value = "/all", method = RequestMethod.GET)
     public ModelAndView getAllProjects() {
         List<Project> projects = projectService.getAll();
+
+        projects.sort((p1, p2) -> p1.getId().compareTo(p2.getId()));
 
         ModelAndView modelAndView = new ModelAndView("allProjectsTemplate");
 
         modelAndView.addObject("projects", projects);
 
         return modelAndView;
-    }*/
+    }
 
     private boolean isUserInProject(Project project) {
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
