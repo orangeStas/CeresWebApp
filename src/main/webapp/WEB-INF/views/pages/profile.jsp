@@ -15,7 +15,9 @@
                 <div class="card-content white-text">
                     <div class="row">
                         <div class="col s3">
-                            <img width="230" class="circle" style="margin-top: 20px;" src="https://upload.wikimedia.org/wikipedia/commons/9/9a/%D0%9D%D0%B5%D1%82_%D1%84%D0%BE%D1%82%D0%BE.png" alt="profile-image" />
+                            <a href="#image-changer">
+                                <img width="230" class="circle" style="margin-top: 20px;" src="https://upload.wikimedia.org/wikipedia/commons/9/9a/%D0%9D%D0%B5%D1%82_%D1%84%D0%BE%D1%82%D0%BE.png" alt="profile-image" />
+                            </a>
                         </div>
                         <div class="col s9">
                             <h4>${student.surname} ${student.name} ${student.middleName}</h4>
@@ -100,4 +102,27 @@
             </div>
         </div>
     </div>
+</div>
+
+<!-- Modal view -->
+
+<div id="image-changer" style="width: 25%" class="modal">
+    <form action="#">
+        <div class="modal-content">
+            <h4>Изменить фотографию</h4>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/9/9a/%D0%9D%D0%B5%D1%82_%D1%84%D0%BE%D1%82%D0%BE.png" alt="image" id="blah" style="width: 100%"/>
+
+        </div>
+        <div class="modal-footer">
+
+            <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Отмена</a>
+            <button type="submit" class="modal-action modal-close waves-effect waves-green btn-flat">Ок</button>
+            <span class="file-field left" style="margin-top: -6px; margin-left: 20px;">
+                <div class="btn modal-action waves-effect waves-green btn-flat">
+                    <span>Файл</span>
+                    <input type="file" onchange="readURL(this);" />
+                </div>
+            </span>
+        </div>
+    </form>
 </div>
