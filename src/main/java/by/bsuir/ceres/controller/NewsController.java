@@ -29,10 +29,6 @@ public class NewsController {
         ModelAndView modelAndView = new ModelAndView("newsTemplate");
         ArrayList<News> newses = (ArrayList<News>) newsService.getAllNews();
         modelAndView.addObject("newsList", newses);
-
-        topMenu = (ArrayList<Menu>) menuService.getTopMenu();
-        modelAndView.addObject("topMenu", topMenu);
-
         return modelAndView;
     }
 

@@ -58,7 +58,7 @@
                                     </p>
                                 </div>
                                 <div class="card-action">
-                                    <a href="/files/${courseWork.statement}">Пояснительная записка</a>
+                                    <a href="/files/${courseWork.statement}">Заявление</a>
                                     <a href="/files/${courseWork.source}" class="right">Исходный код</a>
                                 </div>
                             </div>

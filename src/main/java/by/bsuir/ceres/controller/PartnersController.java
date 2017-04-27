@@ -35,9 +35,6 @@ public class PartnersController {
 
         participants = (ArrayList<Participant>) participantService.getAllParticipants();
         contactPersons = (ArrayList<ContactPerson>) contactPersonService.getAllContactPersons();
-        topMenu = (ArrayList<Menu>) menuService.getTopMenu();
-
-        modelAndView.addObject("topMenu", topMenu);
         modelAndView.addObject("participantsList", participants);
         modelAndView.addObject("contactPersonsList", contactPersons);
 

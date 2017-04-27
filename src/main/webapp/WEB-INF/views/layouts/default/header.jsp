@@ -18,7 +18,7 @@
     <a href="/" class="brand-logo hide-on-med-and-down">CERES PROJECT</a>
     <ul class="right">
 
-        <c:forEach var="item" items="${topMenu}">
+        <c:forEach var="item" items="${menu}">
             <c:if test="${fn:startsWith(currUrl, item.url)}">
                 <li class="active"><a href="${item.url}">${item.title}</a></li>
             </c:if>
@@ -32,7 +32,14 @@
             <li><a href="<c:url value="/login"/>" class="waves-effect waves-light btn">Войти</a></li>
         </c:if>
         <c:if test="${not empty pageContext.request.userPrincipal.name}">
-            <li><a href="#!" class="dropdown-button" data-activates="education-dropdown">Образование</a></li>
+            <c:if test="${fn:startsWith(currUrl, '/education')}">
+                <li class="active"><a href="/education/project/all" class="dropdown-button" data-activates="education-dropdown">Образование</a></li>
+            </c:if>
+
+            <c:if test="${not fn:startsWith(currUrl, '/education')}">
+                <li><a href="/education/project/all" class="dropdown-button" data-activates="education-dropdown">Образование</a></li>
+            </c:if>
+
             <li><a href="/login?logout"
                    class="waves-effect waves-light red accent-2 btn">выход</a></li>
         </c:if>
@@ -41,6 +48,7 @@
 </nav>
 
 <ul class="dropdown-content" id="education-dropdown" >
-    <li><a href="/education/profile/<%= session.getAttribute("userId")%>">Мой профиль</a></li>
-    <li><a href="/education/projects/">Мои проекты</a></li>
+    <li><a href="/education/profile/-1">Мой профиль</a></li>
+    <li><a href="/education/project/all">Научные проекты</a></li>
+    <li><a href="#">Курсовые работы</a></li>
 </ul>

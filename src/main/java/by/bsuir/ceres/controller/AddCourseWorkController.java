@@ -21,6 +21,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -110,6 +112,12 @@ public class AddCourseWorkController {
                 "attachment;filename=" + statementFileName);
         try {
             documentGeneratorService.generateCourseWorkStatement(courseWorkStatement, response.getOutputStream());
+
+            String statementFilePath = PATH + statementFileName;
+            try (FileOutputStream fileOutputStream = new FileOutputStream(new File(statementFilePath))) {
+                documentGeneratorService.generateCourseWorkStatement(courseWorkStatement, fileOutputStream);
+            }
+
         } catch (DocumentException | IOException e) {
             e.printStackTrace();
         }
@@ -117,6 +125,7 @@ public class AddCourseWorkController {
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         by.bsuir.ceres.bean.User user1 = userService.findByEmail(user.getUsername());
         courseWork.setStudent(user1.getStudent());
+
 
         courseWorkService.createCourseWork(courseWork);
 

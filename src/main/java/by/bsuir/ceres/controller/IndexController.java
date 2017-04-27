@@ -25,11 +25,7 @@ public class IndexController {
                                      HttpServletRequest request) {
 
         ModelAndView modelAndView = new ModelAndView("indexTemplate");
-
-        topMenu = (ArrayList<Menu>) menuService.getTopMenu();
-        modelAndView.addObject("topMenu", topMenu);
-
-        request.getSession().setAttribute("menu", topMenu);
+        request.getSession().setAttribute("menu", menuService.getTopMenu());
 
         return modelAndView;
     }

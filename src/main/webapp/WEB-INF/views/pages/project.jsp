@@ -113,6 +113,21 @@
                 <div class="card-content">
                     <h5 class="teal-text">Состав проекта</h5>
                     <c:forEach var="student" items="${project.participants}">
+
+                        <div class="card teal darken-1 hoverable">
+                            <div class="card-content">
+                                <span class="card-title white-text">
+                                    ${project.author.name} ${project.author.surname}
+                                </span>
+                                <p class="white-text" style="margin-top: 10px">
+                                        ${project.author.speciality.faculty.university.name}
+                                </p>
+                            </div>
+                            <div class="card-action">
+                                <a href="/education/profile/${project.author.id}">Профиль</a>
+                            </div>
+                        </div>
+
                         <div class="card teal darken-1 hoverable">
                             <div class="card-content">
                                 <span class="card-title white-text">
