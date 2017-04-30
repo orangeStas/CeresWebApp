@@ -50,5 +50,6 @@
 <ul class="dropdown-content" id="education-dropdown" >
     <li><a href="/education/profile/-1">Мой профиль</a></li>
     <li><a href="/education/project/all">Научные проекты</a></li>
-    <li><a href="#">Курсовые работы</a></li>
+    <li><a href="/education/project/openCreateProject">Создать проект</a></li>
+    <li><a href="/education/addCourseWork">Загрузить курсовую работу</a></li>
 </ul>

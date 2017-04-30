@@ -34,6 +34,9 @@
                         <div class="card-content white">
                             <div id="description${project.id}">
                                 <p>${project.description}</p>
+                                <c:forEach var="tag" items="${project.tags}">
+                                    <div class="chip" style="margin-top: 7px">${tag.name}</div>
+                                </c:forEach>
                             </div>
 
                             <div id="participants${project.id}">
