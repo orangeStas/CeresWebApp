@@ -30,6 +30,9 @@ public class Student implements Serializable {
     @Column(name = "surname")
     private String surname;
 
+    @Column(name = "imageName")
+    private String imageName;
+
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "student")
     @OrderBy("id DESC")
     private Set<CourseWork> courseWorks;
@@ -97,5 +100,13 @@ public class Student implements Serializable {
 
     public void setSpeciality(Speciality speciality) {
         this.speciality = speciality;
+    }
+
+    public String getImageName() {
+        return imageName;
+    }
+
+    public void setImageName(String imageName) {
+        this.imageName = imageName;
     }
 }
