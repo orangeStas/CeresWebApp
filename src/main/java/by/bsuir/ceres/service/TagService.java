@@ -8,4 +8,7 @@ public interface TagService {
     List<Tag> getAll();
 
     Tag getById(Long id);
+    void createTag(Tag tag);
+    void updateTag(Tag tag);
+    void deleteTagById(Long id);
 }

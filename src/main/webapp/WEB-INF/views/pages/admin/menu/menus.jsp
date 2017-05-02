@@ -24,9 +24,10 @@
                     <div class="card-content">
                         <span class="card-title">Menu items</span>
                         <c:if test="${not empty menuList}">
-                            <table class="highlight teal-text">
+                            <table class="highlight teal-text bordered">
                                 <thead>
                                 <tr>
+                                    <th>Id</th>
                                     <th>Active</th>
                                     <th>Weight</th>
                                     <th>Title</th>
@@ -39,8 +40,9 @@
                                 </thead>
                                 <tbody>
                                 <c:if test="${not empty menuList}">
-                                    <c:forEach var="menu" items="${menuList}">
+                                    <c:forEach var="person" items="${menuList}">
                                         <tr>
+                                            <th>${menu.id}</th>
                                             <th>${menu.active}</th>
                                             <th>${menu.weight}</th>
                                             <th>${menu.title}</th>
@@ -48,11 +50,11 @@
                                             <th>${menu.icon}</th>
                                             <th>${menu.position}</th>
                                             <th>
-                                                <a class="btn waves-effect waves-light teal" href="/admin/menus/edit/${menu.id}"><i
+                                                <a class="btn waves-effect waves-light teal" href="/admin/menus/edit/${person.id}"><i
                                                         class="material-icons">mode_edit</i></a>
                                             </th>
                                             <th>
-                                                <a class="btn waves-effect waves-light red" href="/admin/menus/delete/${menu.id}"><i
+                                                <a class="btn waves-effect waves-light red" href="/admin/menus/delete/${person.id}"><i
                                                         class="material-icons">delete</i>
                                                 </a>
                                             </th>
@@ -63,8 +65,7 @@
                             </table>
                         </c:if>
                         <div class="card-action">
-                            <a class="btn waves-effect waves-light teal right" href="/admin/menus/new">Add new menu
-                                item</a>
+                            <a class="btn waves-effect waves-light teal right" href="/admin/menus/new">Добавить</a>
                         </div>
                     </div>
                 </div>
@@ -72,16 +73,5 @@
         </div>
     </div>
 </div>
-
 </body>
-<script type="text/javascript">
-    function deleteMenuItem(id) {
-        $.ajax({
-            url: '/admin/menus/delete/' + id,
-            success: function (data) {
-                location.reload();
-            }
-        });
-    }
-</script>
 </html>

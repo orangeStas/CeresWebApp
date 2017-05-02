@@ -1,7 +1,6 @@
 package by.bsuir.ceres.controller;
 
-import by.bsuir.ceres.bean.Menu;
-import by.bsuir.ceres.bean.User;
+import by.bsuir.ceres.bean.*;
 import by.bsuir.ceres.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -124,13 +123,89 @@ public class AdminController {
     }
 
     @RequestMapping(value = "/partners/all")
-    public ModelAndView allPartners(){
-        return new ModelAndView("adminPartnersTemplate");
+    public ModelAndView allPartners(ModelAndView modelAndView){
+        List<Participant> participantList = participantService.getAllParticipants();
+        modelAndView.addObject("partnerList", participantList);
+        modelAndView.setViewName("adminPartnersTemplate");
+        return modelAndView;
     }
 
+    @RequestMapping(value = "/partners/save", method = RequestMethod.POST)
+    public String  createPartner (@ModelAttribute("partner") Participant participant) {
+        if(participant != null){
+            if(participant.getId() == null){
+                participantService.createParticipant(participant);
+            }else {
+                participantService.updateParticipantById(participant);
+            }
+        }
+        return "redirect:/admin/partners/all";
+    }
+
+    @RequestMapping(value = "/partners/new")
+    public ModelAndView newPartner(ModelAndView modelAndView){
+        modelAndView.setViewName("adminEditPartnersTemplate");
+        modelAndView.addObject("partner", new Participant());
+        List<ContactPerson> personList = contactPersonService.getAllContactPersons();
+        modelAndView.addObject("personList", personList);
+        return modelAndView;
+    }
+
+    @RequestMapping(value = "/partners/delete/{id}")
+    public String deletePartner(@PathVariable(value = "id") Long id){
+        participantService.deleteParticipantById(id);
+        return "redirect:/admin/partners/all";
+    }
+
+    @RequestMapping(value = "/partners/edit/{id}", method = RequestMethod.GET)
+    public ModelAndView editPartner(@PathVariable(value = "id") Long id) {
+        Participant participant = participantService.getParticipantsById(id);
+        ModelAndView modelAndView = new ModelAndView("adminEditPartnersTemplate");
+        modelAndView.addObject("partner", participant);
+        List<ContactPerson> personList = contactPersonService.getAllContactPersons();
+        modelAndView.addObject("personList", personList);
+        return modelAndView;
+    }
     @RequestMapping(value = "/contactpersons/all")
-    public ModelAndView allContactPersons(){
-        return new ModelAndView("adminContactPersonsTemplate");
+    public ModelAndView allContactPersons(ModelAndView modelAndView){
+        List<ContactPerson> personList = contactPersonService.getAllContactPersons();
+        modelAndView.addObject("personList", personList);
+        modelAndView.setViewName("adminContactPersonsTemplate");
+        return modelAndView;
+
+    }
+
+    @RequestMapping(value = "/contactpersons/save", method = RequestMethod.POST)
+    public String  createContactPerson (@ModelAttribute("person") ContactPerson person) {
+        if(person != null){
+            if(person.getId() == null){
+                contactPersonService.createContactPerson(person);
+            }else {
+                contactPersonService.updateContactPersonById(person);
+            }
+        }
+        return "redirect:/admin/contactpersons/all";
+    }
+
+    @RequestMapping(value = "/contactpersons/new")
+    public ModelAndView newContactPerson(ModelAndView modelAndView){
+        modelAndView.setViewName("adminEditContactPersonsTemplate");
+        modelAndView.addObject("person", new ContactPerson());
+        return modelAndView;
+    }
+
+    @RequestMapping(value = "/contactpersons/delete/{id}")
+    public String deleteContactPerson(@PathVariable(value = "id") Long id){
+        contactPersonService.deleteContactPersonById(id);
+        return "redirect:/admin/contactpersons/all";
+    }
+
+    @RequestMapping(value = "/contactpersons/edit/{id}", method = RequestMethod.GET)
+    public ModelAndView editContactPerson(@PathVariable(value = "id") Long id) {
+        ContactPerson contactPerson = contactPersonService.getContactPersonById(id);
+        ModelAndView model = new ModelAndView("adminEditContactPersonsTemplate");
+        model.addObject("person", contactPerson);
+        return model;
     }
 
     @RequestMapping(value = "/projects/all")
@@ -139,8 +214,44 @@ public class AdminController {
     }
 
     @RequestMapping(value = "/tags/all")
-    public ModelAndView allTags(){
-        return new ModelAndView("adminTagsTemplate");
+    public ModelAndView allTags(ModelAndView modelAndView){
+        List<Tag> tagList = tagService.getAll();
+        modelAndView.setViewName("adminTagsTemplate");
+        modelAndView.addObject("tagList", tagList);
+        return modelAndView;
+    }
+
+    @RequestMapping(value = "/tags/save", method = RequestMethod.POST)
+    public String  createMenu (@ModelAttribute("tag") Tag tag) {
+        if(tag != null){
+            if(tag.getId() == null){
+                tagService.createTag(tag);
+            }else {
+                tagService.updateTag(tag);
+            }
+        }
+        return "redirect:/admin/tags/all";
+    }
+
+    @RequestMapping(value = "/tags/new")
+    public ModelAndView newTag(ModelAndView modelAndView){
+        modelAndView.setViewName("adminEditTagTemplate");
+        modelAndView.addObject("tag", new Tag());
+        return modelAndView;
+    }
+
+    @RequestMapping(value = "/tags/delete/{id}")
+    public String deleteTag(@PathVariable(value = "id") Long id){
+        tagService.deleteTagById(id);
+        return "redirect:/admin/tags/all";
+    }
+
+    @RequestMapping(value = "/tags/edit/{id}", method = RequestMethod.GET)
+    public ModelAndView editTag(@PathVariable(value = "id") Long id) {
+        Tag tag = tagService.getById(id);
+        ModelAndView model = new ModelAndView("adminEditTagTemplate");
+        model.addObject("tag", tag);
+        return model;
     }
 
 
