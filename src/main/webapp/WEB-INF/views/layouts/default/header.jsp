@@ -32,13 +32,13 @@
             <li><a href="<c:url value="/login"/>" class="waves-effect waves-light btn">Войти</a></li>
         </c:if>
         <c:if test="${not empty pageContext.request.userPrincipal.name}">
-            <c:if test="${fn:startsWith(currUrl, '/education')}">
+            <sec:authorize access="hasRole('ROLE_USER')">
                 <li class="active"><a href="/education/project/all" class="dropdown-button" data-activates="education-dropdown">Образование</a></li>
-            </c:if>
+            </sec:authorize>
 
-            <c:if test="${not fn:startsWith(currUrl, '/education')}">
-                <li><a href="/education/project/all" class="dropdown-button" data-activates="education-dropdown">Образование</a></li>
-            </c:if>
+            <sec:authorize access="hasRole('ROLE_ADMIN')">
+                <li ><a href="/admin/home">Администрирование</a></li>
+            </sec:authorize>
 
             <li><a href="/login?logout"
                    class="waves-effect waves-light red accent-2 btn">выход</a></li>

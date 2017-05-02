@@ -7,6 +7,7 @@
         <security:csrf disabled="true"></security:csrf>
         <security:intercept-url pattern="/" access="permitAll"/>
         <security:intercept-url pattern="/education/**" access="hasRole('ROLE_USER')"/>
+        <security:intercept-url pattern="/admin/**" access="hasRole('ROLE_ADMIN')"/>
         <security:form-login login-page="/login" default-target-url="/index"
                              authentication-failure-url="/login?error"
                              username-parameter="email" password-parameter="password"/>
@@ -26,4 +27,5 @@
     </bean>
 
     <bean class="org.springframework.security.web.access.expression.DefaultWebSecurityExpressionHandler" />
+
 </beans>
