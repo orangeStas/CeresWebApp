@@ -1,0 +1,72 @@
+<?xml version = "1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC
+        "-//Apache Software Foundation//DTD Tiles Configuration 4.0//EN"
+        "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+<tiles-definitions>
+    <definition name="defaultTemplate" template="/WEB-INF/views/template/def_template.jsp">
+        <put-attribute name="navigation" value="/WEB-INF/views/layouts/default/header.jsp" />
+        <put-attribute name="content" value="/WEB-INF/views/pages/index.jsp"/>
+    </definition>
+
+    <definition name="indexTemplate" extends="defaultTemplate">
+        <put-attribute name="content" value="/WEB-INF/views/pages/index.jsp"/>
+    </definition>
+
+    <definition name="newsTemplate" extends="defaultTemplate">
+        <put-attribute name="content" value="/WEB-INF/views/pages/news.jsp"/>
+    </definition>
+
+    <definition name="aboutTemplate" extends="defaultTemplate">
+        <put-attribute name="content" value="/WEB-INF/views/pages/about.jsp"/>
+    </definition>
+
+    <definition name="participantsTemplate" extends="defaultTemplate">
+        <put-attribute name="content" value="/WEB-INF/views/pages/participants.jsp"/>
+    </definition>
+
+    <definition name="registrationTemplate" extends="defaultTemplate">
+        <put-attribute name="navigation" value="/WEB-INF/views/layouts/default/header_auth.jsp"/>
+        <put-attribute name="content" value="/WEB-INF/views/pages/registration.jsp"/>
+    </definition>
+
+    <definition name="loginTemplate" extends="defaultTemplate">
+        <put-attribute name="navigation" value="/WEB-INF/views/layouts/default/header_auth.jsp"/>
+        <put-attribute name="content" value="/WEB-INF/views/pages/login.jsp"/>
+    </definition>
+
+    <definition name="addCourseWorkTemplate" extends="defaultTemplate">
+        <put-attribute name="navigation" value="/WEB-INF/views/layouts/default/header.jsp"/>
+        <put-attribute name="content" value="/WEB-INF/views/pages/addCourseWork.jsp" />
+    </definition>
+
+    <definition name="eduTemplate" template="/WEB-INF/views/template/edu_template.jsp">
+        <put-attribute name="navigation" value="/WEB-INF/views/layouts/default/header.jsp" />
+        <put-attribute name="content" value="/WEB-INF/views/pages/about.jsp"/>
+    </definition>
+
+    <definition name="createProjectTemplate" template="/WEB-INF/views/template/edu_template.jsp">
+        <put-attribute name="navigation" value="/WEB-INF/views/layouts/default/header.jsp" />
+        <put-attribute name="content" value="/WEB-INF/views/pages/new_project.jsp"/>
+    </definition>
+
+    <definition name="projectTemplate" template="/WEB-INF/views/template/edu_template.jsp">
+        <put-attribute name="navigation" value="/WEB-INF/views/layouts/default/header.jsp" />
+        <put-attribute name="content" value="/WEB-INF/views/pages/project.jsp"/>
+    </definition>
+
+    <definition name="profileTemplate" template="/WEB-INF/views/template/edu_template.jsp">
+        <put-attribute name="navigation" value="/WEB-INF/views/layouts/default/header.jsp" />
+        <put-attribute name="content" value="/WEB-INF/views/pages/profile.jsp"/>
+    </definition>
+
+    <definition name="chatTemplate" template="/WEB-INF/views/template/chat_template.jsp">
+        <put-attribute name="navigation" value="/WEB-INF/views/layouts/default/header.jsp"/>
+        <put-attribute name="content" value="/WEB-INF/views/pages/chat.jsp" />
+    </definition>
+
+    <definition name="allProjectsTemplate" template="/WEB-INF/views/template/edu_template.jsp">
+        <put-attribute name="navigation" value="/WEB-INF/views/layouts/default/header.jsp" />
+        <put-attribute name="left_menu" value=""/>
+        <put-attribute name="content" value="/WEB-INF/views/pages/all_projects.jsp"/>
+    </definition>
+</tiles-definitions>
