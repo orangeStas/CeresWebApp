@@ -9,6 +9,7 @@ import javax.persistence.Entity;
 import javax.persistence.OrderBy;
 import javax.persistence.Table;
 import java.io.Serializable;
+import java.util.Objects;
 import java.util.Set;
 
 @Entity
@@ -108,5 +109,19 @@ public class Student implements Serializable {
 
     public void setImageName(String imageName) {
         this.imageName = imageName;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Student)) return false;
+        Student student = (Student) o;
+        return Objects.equals(id, student.id) &&
+                Objects.equals(user, student.user);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, user);
     }
 }

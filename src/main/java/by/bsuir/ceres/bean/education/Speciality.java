@@ -2,6 +2,7 @@ package by.bsuir.ceres.bean.education;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Objects;
 
 import static javax.persistence.GenerationType.IDENTITY;
 
@@ -42,5 +43,18 @@ public class Speciality implements Serializable {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Speciality)) return false;
+        Speciality that = (Speciality) o;
+        return Objects.equals(id, that.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
     }
 }
