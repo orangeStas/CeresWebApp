@@ -21,7 +21,7 @@
                         <span class="card-title">Contact persons</span>
                         <div class="row">
                             <form:form method="post" action="${pageContext.request.contextPath}/admin/contactpersons/save"
-                                       modelAttribute="person" commandName="person" cssclass="col s12">
+                                       modelAttribute="person" commandName="person" cssclass="col s12" enctype="multipart/form-data">
                                 <form:hidden path="id"/>
                                 <div class="row">
                                     <div class="input-field col s12">
@@ -51,11 +51,13 @@
                                         <label for="position">Position</label>
                                     </div>
                                 </div>
-                                <div class="row">
-                                    <div class="input-field col s12">
-                                        <form:input path="imageFileName" required="required" type="text" cssclass="validate"
-                                                    id="imageFileName" autfocus="true"/>
-                                        <label for="imageFileName">Image file name</label>
+                                <div class="file-field input-field col s6">
+                                    <div class="btn">
+                                        <span>File</span>
+                                        <input type="file" name="sourceFile" id="sourceInput" multiple>
+                                    </div>
+                                    <div class="file-path-wrapper">
+                                        <input class="file-path validate" type="text" name="imageName" value="${requestScope.imageName}">
                                     </div>
                                 </div>
                                 <div class="row">

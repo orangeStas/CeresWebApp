@@ -419,7 +419,23 @@ public class AdminController {
     }
 
     @RequestMapping(value = "/contactpersons/save", method = RequestMethod.POST)
-    public String createContactPerson(@ModelAttribute("person") ContactPerson person) {
+    public String createContactPerson(@ModelAttribute("person") ContactPerson person,@RequestParam(name = "imageName") String imageName, @RequestParam("sourceFile") MultipartFile multipartFile) {
+        if (!multipartFile.getOriginalFilename().isEmpty()) {
+            String imageFileName = UUID.randomUUID() + ".jpg";
+            try {
+                byte[] bytes = multipartFile.getBytes();
+                Path path = Paths.get(PATH + imageFileName);
+                if (!Files.exists(Paths.get(PATH))) {
+                    Files.createDirectory(Paths.get(PATH));
+                }
+                Files.write(path, bytes);
+                person.setImageFileName(imageFileName);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }else {
+            person.setImageFileName(imageName);
+        }
         if (person != null) {
             if (person.getId() == null) {
                 contactPersonService.createContactPerson(person);
@@ -444,8 +460,9 @@ public class AdminController {
     }
 
     @RequestMapping(value = "/contactpersons/edit/{id}", method = RequestMethod.GET)
-    public ModelAndView editContactPerson(@PathVariable(value = "id") Long id) {
+    public ModelAndView editContactPerson(@PathVariable(value = "id") Long id, HttpServletRequest request) {
         ContactPerson contactPerson = contactPersonService.getContactPersonById(id);
+        request.setAttribute("imageName", contactPerson.getImageFileName());
         ModelAndView model = new ModelAndView("adminEditContactPersonsTemplate");
         model.addObject("person", contactPerson);
         return model;
