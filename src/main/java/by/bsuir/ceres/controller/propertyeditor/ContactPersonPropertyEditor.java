@@ -20,7 +20,11 @@ public class ContactPersonPropertyEditor extends PropertyEditorSupport {
 
     @Override
     public String getAsText() {
-        return Long.toString(((ContactPerson)getValue()).getId());
+        String result = null;
+        if(getValue() != null) {
+            result = Long.toString(((ContactPerson) getValue()).getId());
+        }
+        return  result;
     }
 
     @Override

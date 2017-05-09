@@ -2,6 +2,7 @@ package by.bsuir.ceres.bean;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Objects;
 
 @Entity
 @Table(name = "contactpersons")
@@ -84,5 +85,18 @@ public class ContactPerson implements Serializable {
 
     public void setPosition(String position) {
         this.position = position;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof ContactPerson)) return false;
+        ContactPerson that = (ContactPerson) o;
+        return Objects.equals(id, that.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
     }
 }

@@ -1,16 +1,15 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: Anton Shulha
-  Date: 03.05.2017
-  Time: 0:52
+  Date: 07.05.2017
+  Time: 22:11
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Edit partner</title>
+    <title>Edit user</title>
 </head>
 <body>
 <div class="container">
@@ -19,10 +18,10 @@
             <div class="card darken-1 hoverable">
                 <div class="card-content teal-text">
                     <div class="card-content">
-                        <span class="card-title">Partner</span>
+                        <span class="card-title">User</span>
                         <div class="row">
-                            <form:form method="post" action="${pageContext.request.contextPath}/admin/partners/save"
-                                       modelAttribute="partner" commandName="partner" cssclass="col s12" enctype="multipart/form-data">
+                            <form:form method="post" action="${pageContext.request.contextPath}/admin/users/save"
+                                       modelAttribute="student" commandName="student" cssclass="col s12">
                                 <form:hidden path="id"/>
                                 <div class="row">
                                     <div class="input-field col s12">
@@ -33,52 +32,42 @@
                                 </div>
                                 <div class="row">
                                     <div class="input-field col s12">
-                                        <form:input path="address" required="required" type="text" cssclass="validate"
-                                                    id="address" autfocus="true"/>
-                                        <label for="address">Address</label>
-                                    </div>
-                                </div><div class="row">
-                                <div class="input-field col s12">
-                                    <form:input path="site" required="required" type="text"
-                                                id="site" autfocus="true"/>
-                                    <label for="site">Site</label>
-                                </div>
-                            </div>
-                                <div class="row">
-                                    <div class="input-field col s12">
-                                        <form:input path="phone" required="required" type="text"
-                                                    id="phone" autfocus="true"/>
-                                        <label for="phone">Phone</label>
+                                        <form:input path="middleName" required="required" type="text" cssclass="validate"
+                                                    id="middleName" autfocus="true"/>
+                                        <label for="middleName">Middle name</label>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="input-field col s12">
-                                        <form:textarea cssClass="materialize-textarea" path="description" required="required" type="text" id="description" autfocus="true"/>
-                                        <label for="description">Desctiption</label>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="input-field col s12">
-                                        <form:select path="contactPerson" id="contactPerson">
-                                            <form:options cssClass="left circle" items="${personList}" itemValue="id" itemLabel="name" data-icon="imageFileName"/>
-                                        </form:select>
-                                        <label for="contactPerson">Contact persons</label>
-                                    </div>
-                                </div>
-                                <div class="file-field input-field col s6">
-                                    <div class="btn">
-                                        <span>File</span>
-                                        <input type="file" name="sourceFile" id="sourceInput" multiple>
-                                    </div>
-                                    <div class="file-path-wrapper">
-                                        <input class="file-path validate" type="text" name="imageName" value="${requestScope.imageName}">
+                                        <form:input path="surname" required="required" type="text" cssclass="validate"
+                                                    id="surname" autfocus="true"/>
+                                        <label for="surname">Last name</label>
                                     </div>
                                 </div>
 
                                 <div class="row">
                                     <div class="input-field col s12">
-                                        <form:checkbox path="active" id="active"/>
-                                        <label for="active">Active</label>
+                                        <form:input path="imageName" type="text" cssclass="validate"
+                                                    id="imageName" autfocus="true"/>
+                                        <label for="imageName">Image</label>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="input-field col s12">
+                                        <form:select path="speciality" id="speciality" multiple="false">
+                                            <form:options  items="${specialtyList}" itemValue="id" itemLabel="name"/>
+                                        </form:select>
+                                        <label for="speciality">Specialty</label>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="input-field col s12">
+                                        <form:select path="user" id="user" multiple="false">
+                                            <form:options  items="${userList}" itemValue="id" itemLabel="mail"/>
+                                        </form:select>
+                                        <label for="user">User</label>
                                     </div>
                                 </div>
                                 <div class="row">

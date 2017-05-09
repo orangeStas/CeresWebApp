@@ -22,12 +22,10 @@
                                 <thead>
                                 <tr>
                                     <th>Id</th>
-                                    <th>Active</th>
                                     <th>Name</th>
                                     <th>Address</th>
                                     <th>Phone</th>
                                     <th>Position</th>
-                                    <th>Image file name</th>
                                     <th>Edit</th>
                                     <th>Delete</th>
                                 </tr>
@@ -37,12 +35,10 @@
                                     <c:forEach var="person" items="${personList}">
                                         <tr>
                                             <th>${person.id}</th>
-                                            <th>${person.active}</th>
                                             <th>${person.name}</th>
                                             <th>${person.address}</th>
                                             <th>${person.phone}</th>
                                             <th>${person.position}</th>
-                                            <th>${person.imageFileName}</th>
                                             <th>
                                                 <a class="btn waves-effect waves-light teal" href="/admin/contactpersons/edit/${person.id}"><i
                                                         class="material-icons">mode_edit</i></a>
