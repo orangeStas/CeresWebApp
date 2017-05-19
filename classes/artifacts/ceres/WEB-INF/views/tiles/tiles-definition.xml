@@ -16,6 +16,10 @@
         <put-attribute name="content" value="/WEB-INF/views/pages/news.jsp"/>
     </definition>
 
+    <definition name="meetingsTemplate" extends="defaultTemplate">
+        <put-attribute name="content" value="/WEB-INF/views/pages/meetings.jsp"/>
+    </definition>
+
     <definition name="aboutTemplate" extends="defaultTemplate">
         <put-attribute name="content" value="/WEB-INF/views/pages/about.jsp"/>
     </definition>
@@ -69,4 +73,130 @@
         <put-attribute name="left_menu" value=""/>
         <put-attribute name="content" value="/WEB-INF/views/pages/all_projects.jsp"/>
     </definition>
+
+    <definition name="adminHomeTemplate" template="/WEB-INF/views/template/admin_template.jsp">
+        <put-attribute name="navigation" value="/WEB-INF/views/layouts/default/header.jsp" />
+        <put-attribute name="admin_left_menu" value="/WEB-INF/views/pages/admin/left_menu.jsp"/>
+        <put-attribute name="content" value="/WEB-INF/views/pages/admin/home.jsp"/>
+    </definition>
+
+    <definition name="adminContactPersonsTemplate" template="/WEB-INF/views/template/admin_template.jsp">
+        <put-attribute name="navigation" value="/WEB-INF/views/layouts/default/header.jsp" />
+        <put-attribute name="admin_left_menu" value="/WEB-INF/views/pages/admin/left_menu.jsp"/>
+        <put-attribute name="content" value="/WEB-INF/views/pages/admin/contactperson/contactPersons.jsp"/>
+    </definition>
+
+    <definition name="adminEditContactPersonsTemplate" template="/WEB-INF/views/template/admin_template.jsp">
+        <put-attribute name="navigation" value="/WEB-INF/views/layouts/default/header.jsp" />
+        <put-attribute name="admin_left_menu" value="/WEB-INF/views/pages/admin/left_menu.jsp"/>
+        <put-attribute name="content" value="/WEB-INF/views/pages/admin/contactperson/editContactPerson.jsp"/>
+    </definition>
+
+    <definition name="adminEventsTemplate" template="/WEB-INF/views/template/admin_template.jsp">
+        <put-attribute name="navigation" value="/WEB-INF/views/layouts/default/header.jsp" />
+        <put-attribute name="admin_left_menu" value="/WEB-INF/views/pages/admin/left_menu.jsp"/>
+        <put-attribute name="content" value="/WEB-INF/views/pages/admin/events.jsp"/>
+    </definition>
+
+    <definition name="adminFacultiesTemplate" template="/WEB-INF/views/template/admin_template.jsp">
+        <put-attribute name="navigation" value="/WEB-INF/views/layouts/default/header.jsp" />
+        <put-attribute name="admin_left_menu" value="/WEB-INF/views/pages/admin/left_menu.jsp"/>
+        <put-attribute name="content" value="/WEB-INF/views/pages/admin/faculty/faculties.jsp"/>
+    </definition>
+
+    <definition name="adminEditFacultiesTemplate" template="/WEB-INF/views/template/admin_template.jsp">
+        <put-attribute name="navigation" value="/WEB-INF/views/layouts/default/header.jsp" />
+        <put-attribute name="admin_left_menu" value="/WEB-INF/views/pages/admin/left_menu.jsp"/>
+        <put-attribute name="content" value="/WEB-INF/views/pages/admin/faculty/editFaculty.jsp"/>
+    </definition>
+
+    <definition name="adminSpecialtiesTemplate" template="/WEB-INF/views/template/admin_template.jsp">
+        <put-attribute name="navigation" value="/WEB-INF/views/layouts/default/header.jsp" />
+        <put-attribute name="admin_left_menu" value="/WEB-INF/views/pages/admin/left_menu.jsp"/>
+        <put-attribute name="content" value="/WEB-INF/views/pages/admin/specialty/specialities.jsp"/>
+    </definition>
+
+    <definition name="adminEditSpecialtiesTemplate" template="/WEB-INF/views/template/admin_template.jsp">
+        <put-attribute name="navigation" value="/WEB-INF/views/layouts/default/header.jsp" />
+        <put-attribute name="admin_left_menu" value="/WEB-INF/views/pages/admin/left_menu.jsp"/>
+        <put-attribute name="content" value="/WEB-INF/views/pages/admin/specialty/editSpecialty.jsp"/>
+    </definition>
+
+    <definition name="adminNewsTemplate" template="/WEB-INF/views/template/admin_template.jsp">
+        <put-attribute name="navigation" value="/WEB-INF/views/layouts/default/header.jsp" />
+        <put-attribute name="admin_left_menu" value="/WEB-INF/views/pages/admin/left_menu.jsp"/>
+        <put-attribute name="content" value="/WEB-INF/views/pages/admin/news.jsp"/>
+    </definition>
+
+    <definition name="adminPartnersTemplate" template="/WEB-INF/views/template/admin_template.jsp">
+        <put-attribute name="navigation" value="/WEB-INF/views/layouts/default/header.jsp" />
+        <put-attribute name="admin_left_menu" value="/WEB-INF/views/pages/admin/left_menu.jsp"/>
+        <put-attribute name="content" value="/WEB-INF/views/pages/admin/partner/partners.jsp"/>
+    </definition>
+
+    <definition name="adminEditPartnersTemplate" template="/WEB-INF/views/template/admin_template.jsp">
+        <put-attribute name="navigation" value="/WEB-INF/views/layouts/default/header.jsp" />
+        <put-attribute name="admin_left_menu" value="/WEB-INF/views/pages/admin/left_menu.jsp"/>
+        <put-attribute name="content" value="/WEB-INF/views/pages/admin/partner/editPartner.jsp"/>
+    </definition>
+
+    <definition name="adminProjectsTemplate" template="/WEB-INF/views/template/admin_template.jsp">
+        <put-attribute name="navigation" value="/WEB-INF/views/layouts/default/header.jsp" />
+        <put-attribute name="admin_left_menu" value="/WEB-INF/views/pages/admin/left_menu.jsp"/>
+        <put-attribute name="content" value="/WEB-INF/views/pages/admin/project/projects.jsp"/>
+    </definition>
+    <definition name="adminEditProjectsTemplate" template="/WEB-INF/views/template/admin_template.jsp">
+        <put-attribute name="navigation" value="/WEB-INF/views/layouts/default/header.jsp" />
+        <put-attribute name="admin_left_menu" value="/WEB-INF/views/pages/admin/left_menu.jsp"/>
+        <put-attribute name="content" value="/WEB-INF/views/pages/admin/project/editProject.jsp"/>
+    </definition>
+    <definition name="adminTagsTemplate" template="/WEB-INF/views/template/admin_template.jsp">
+        <put-attribute name="navigation" value="/WEB-INF/views/layouts/default/header.jsp" />
+        <put-attribute name="admin_left_menu" value="/WEB-INF/views/pages/admin/left_menu.jsp"/>
+        <put-attribute name="content" value="/WEB-INF/views/pages/admin/tag/tags.jsp"/>
+    </definition>
+
+    <definition name="adminEditTagTemplate" template="/WEB-INF/views/template/admin_template.jsp">
+        <put-attribute name="navigation" value="/WEB-INF/views/layouts/default/header.jsp" />
+        <put-attribute name="admin_left_menu" value="/WEB-INF/views/pages/admin/left_menu.jsp"/>
+        <put-attribute name="content" value="/WEB-INF/views/pages/admin/tag/editTag.jsp"/>
+    </definition>
+
+
+    <definition name="adminUniversitiesTemplate" template="/WEB-INF/views/template/admin_template.jsp">
+        <put-attribute name="navigation" value="/WEB-INF/views/layouts/default/header.jsp" />
+        <put-attribute name="admin_left_menu" value="/WEB-INF/views/pages/admin/left_menu.jsp"/>
+        <put-attribute name="content" value="/WEB-INF/views/pages/admin/university/universities.jsp"/>
+    </definition>
+
+    <definition name="adminEditUniversitiesTemplate" template="/WEB-INF/views/template/admin_template.jsp">
+        <put-attribute name="navigation" value="/WEB-INF/views/layouts/default/header.jsp" />
+        <put-attribute name="admin_left_menu" value="/WEB-INF/views/pages/admin/left_menu.jsp"/>
+        <put-attribute name="content" value="/WEB-INF/views/pages/admin/university/editUniversity.jsp"/>
+    </definition>
+
+    <definition name="adminUsersTemplate" template="/WEB-INF/views/template/admin_template.jsp">
+        <put-attribute name="navigation" value="/WEB-INF/views/layouts/default/header.jsp" />
+        <put-attribute name="admin_left_menu" value="/WEB-INF/views/pages/admin/left_menu.jsp"/>
+        <put-attribute name="content" value="/WEB-INF/views/pages/admin/user/users.jsp"/>
+    </definition>
+
+    <definition name="adminEditUsersTemplate" template="/WEB-INF/views/template/admin_template.jsp">
+        <put-attribute name="navigation" value="/WEB-INF/views/layouts/default/header.jsp" />
+        <put-attribute name="admin_left_menu" value="/WEB-INF/views/pages/admin/left_menu.jsp"/>
+        <put-attribute name="content" value="/WEB-INF/views/pages/admin/user/editUser.jsp"/>
+    </definition>
+
+    <definition name="adminMenusTemplate" template="/WEB-INF/views/template/admin_template.jsp">
+        <put-attribute name="navigation" value="/WEB-INF/views/layouts/default/header.jsp" />
+        <put-attribute name="admin_left_menu" value="/WEB-INF/views/pages/admin/left_menu.jsp"/>
+        <put-attribute name="content" value="/WEB-INF/views/pages/admin/menu/menus.jsp"/>
+    </definition>
+
+    <definition name="adminEditMenuTemplate" template="/WEB-INF/views/template/admin_template.jsp">
+        <put-attribute name="navigation" value="/WEB-INF/views/layouts/default/header.jsp" />
+        <put-attribute name="admin_left_menu" value="/WEB-INF/views/pages/admin/left_menu.jsp"/>
+        <put-attribute name="content" value="/WEB-INF/views/pages/admin/menu/editMenu.jsp"/>
+    </definition>
+
 </tiles-definitions>

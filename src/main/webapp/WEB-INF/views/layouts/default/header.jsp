@@ -29,19 +29,30 @@
         </c:forEach>
 
         <c:if test="${empty pageContext.request.userPrincipal.name}">
-            <li><a href="<c:url value="/login"/>" class="waves-effect waves-light btn">Войти</a></li>
+            <li><a href="<c:url value="/login"/>" class="waves-effect waves-light teal">Войти</a></li>
         </c:if>
         <c:if test="${not empty pageContext.request.userPrincipal.name}">
             <sec:authorize access="hasRole('ROLE_USER')">
-                <li class="active"><a href="/education/project/all" class="dropdown-button" data-activates="education-dropdown">Образование</a></li>
+                <c:if test="${fn:startsWith(currUrl, '/education')}">
+                    <li class="active"><a href="/education/project/all" class="dropdown-button" data-activates="education-dropdown">Образование</a></li>
+                </c:if>
+                <c:if test="${not fn:startsWith(currUrl, '/education')}">
+                    <li><a href="/education/project/all" class="dropdown-button" data-activates="education-dropdown">Образование</a></li>
+                </c:if>
+
             </sec:authorize>
 
             <sec:authorize access="hasRole('ROLE_ADMIN')">
-                <li ><a href="/admin/home">Администрирование</a></li>
-            </sec:authorize>
+                <c:if test="${fn:startsWith(currUrl, '/admin')}">
+                    <li class="active"><a href="/admin/home">Администрирование</a></li>
+                </c:if>
+                <c:if test="${not fn:startsWith(currUrl, '/admin')}">
+                    <li><a href="/admin/home">Администрирование</a></li>
+                </c:if>
+    </sec:authorize>
 
             <li><a href="/login?logout"
-                   class="waves-effect waves-light red accent-2 btn">выход</a></li>
+                   class="waves-effect waves-light red accent-2">Выход</a></li>
         </c:if>
 
     </ul>

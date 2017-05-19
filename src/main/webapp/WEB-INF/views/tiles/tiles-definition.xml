@@ -16,6 +16,10 @@
         <put-attribute name="content" value="/WEB-INF/views/pages/news.jsp"/>
     </definition>
 
+    <definition name="meetingsTemplate" extends="defaultTemplate">
+        <put-attribute name="content" value="/WEB-INF/views/pages/meetings.jsp"/>
+    </definition>
+
     <definition name="aboutTemplate" extends="defaultTemplate">
         <put-attribute name="content" value="/WEB-INF/views/pages/about.jsp"/>
     </definition>

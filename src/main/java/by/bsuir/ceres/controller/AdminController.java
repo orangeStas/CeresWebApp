@@ -25,7 +25,7 @@ import java.util.UUID;
 @Controller
 @RequestMapping(value = "/admin")
 public class AdminController {
-    private static final String PATH = "/files/";
+    private static final String PATH = "files/";
     @Autowired
     private ContactPersonService contactPersonService;
     @Autowired

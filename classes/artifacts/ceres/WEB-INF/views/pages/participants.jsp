@@ -20,7 +20,7 @@
                         <b>Сайт организации :</b> <a href="${participants.site}">${participants.site}</a><br>
                         <b>Контактное лицо организации :</b> ${contactPersonsList[loop.index].name}
                     </div>
-                    <img src="http://bit-cup.bsuir.by/assets/img/logos/brands/bsuir.jpg" alt="" class="col s2">
+                    <img src="${pageContext.request.contextPath}/files/${participants.imageFileName}" alt="" class="col s2">
                 </div>
             </div>
             <div class="collapsible-body">
@@ -29,7 +29,7 @@
                     <h5 class="col offset-s1 s5">Об организации</h5>
                 </div>
                 <div class="row">
-                    <img src="http://bit-cup.bsuir.by/assets/img/logos/brands/bsuir.jpg" alt="" class="col s2 offset-s1">
+                    <img src="${pageContext.request.contextPath}/files/${contactPersonsList[loop.index].imageFileName}" alt="" class="col s2 offset-s1">
                     <div class="col s4">
                         <br><b>Ф.И.О. :</b> ${contactPersonsList[loop.index].name}<br>
                         <b>Должность :</b> ${contactPersonsList[loop.index].position}<br>
