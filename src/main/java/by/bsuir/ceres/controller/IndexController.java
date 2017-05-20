@@ -21,12 +21,27 @@ public class IndexController {
     private MenuService menuService;
 
     @RequestMapping("/index")
-    public ModelAndView getIndexPage(@ModelAttribute("topMenu")ArrayList<Menu> topMenu,
+    public ModelAndView getIndexPage(@ModelAttribute("topMenu") ArrayList<Menu> topMenu,
                                      HttpServletRequest request) {
 
         ModelAndView modelAndView = new ModelAndView("indexTemplate");
         request.getSession().setAttribute("menu", menuService.getTopMenu());
 
+        return modelAndView;
+    }
+
+    @RequestMapping(value = "/404")
+    public ModelAndView errorPage() {
+        ModelAndView modelAndView = new ModelAndView("errorTemplate");
+        String errorCode;
+        String messageFirstPart;
+        String messageSecondPart;
+        errorCode = "404";
+        messageFirstPart = "СТРАНИЦА";
+        messageSecondPart = "НЕ НАЙДЕНА";
+        modelAndView.addObject("errorCode", errorCode);
+        modelAndView.addObject("messageFirstPart", messageFirstPart);
+        modelAndView.addObject("messageSecondPart", messageSecondPart);
         return modelAndView;
     }
 }

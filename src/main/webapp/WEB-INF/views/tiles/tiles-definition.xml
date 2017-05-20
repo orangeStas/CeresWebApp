@@ -70,6 +70,10 @@
         <put-attribute name="content" value="/WEB-INF/views/pages/all_projects.jsp"/>
     </definition>
 
+    <definition name="errorTemplate" template="/WEB-INF/views/template/error_template.jsp">
+        <put-attribute name="content" value="/WEB-INF/views/pages/error_page.jsp"/>
+    </definition>
+
     <definition name="adminHomeTemplate" template="/WEB-INF/views/template/admin_template.jsp">
         <put-attribute name="navigation" value="/WEB-INF/views/layouts/default/header.jsp" />
         <put-attribute name="admin_left_menu" value="/WEB-INF/views/pages/admin/left_menu.jsp"/>
