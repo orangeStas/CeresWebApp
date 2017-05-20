@@ -24,7 +24,7 @@
             </div>
 
             <div class="input-field col s6">
-                <input name="name" id="nameInput" placeholder="Стасюкевичу Станиславу Юрьевичу" type="text" class="validate">
+                <input name="name" id="nameInput" required maxlength="255" placeholder="Стасюкевичу Станиславу Юрьевичу" type="text" class="validate">
                 <label for="nameInput">ФИО</label>
             </div>
 
@@ -33,7 +33,7 @@
         <div class="row">
 
             <div class="input-field col s6">
-                <input required name="topic" id="topicInput" placeholder='игровое приложение "Крестики-нолики"' type="text" class="validate">
+                <input required name="topic" id="topicInput" maxlength="255" placeholder='игровое приложение "Крестики-нолики"' type="text" class="validate">
                 <label for="topicInput">Тема работы</label>
             </div>
 

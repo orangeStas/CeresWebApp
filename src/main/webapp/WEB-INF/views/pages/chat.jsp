@@ -13,7 +13,7 @@
     <div class="row" style="margin-top: 10px;">
         <div class="col s12">
             <h4 style="display: inline">Чат: </h4>
-            <h4 style="display: inline" class="teal-text text-darken-1">"${projectName}"</h4>
+            <h4 style="display: inline" class="teal-text text-darken-1">${projectName}</h4>
         </div>
     </div>
     <input type="hidden" id="from" placeholder="Choose a nickname" value="${student.name}"/>
@@ -49,7 +49,7 @@
 
     <div class="row">
         <div class="input-field col s6">
-            <textarea type="text" id="text" class="materialize-textarea" placeholder="Write a message..." style="padding-top: 0!important; margin-bottom: 0!important;"></textarea>
+            <textarea type="text" id="text" maxlength="250" class="materialize-textarea" placeholder="Write a message..." style="padding-top: 0!important; margin-bottom: 0!important;"></textarea>
         </div>
 
     </div>

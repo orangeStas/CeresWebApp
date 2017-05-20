@@ -90,6 +90,20 @@ public class ProjectController {
         return "redirect:/education/project/" + project.getId();
     }
 
+    @RequestMapping(value = "/leave", method = RequestMethod.POST)
+    public String leaveFromProject(@RequestParam(name = "projectId") Long projectId) {
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        by.bsuir.ceres.bean.User user1 = userService.findByEmail(user.getUsername());
+        Student student = user1.getStudent();
+
+        Project project = projectService.loadById(projectId);
+        project.getParticipants().remove(student);
+
+        projectService.createProject(project);
+
+        return "redirect:/education/project/" + project.getId();
+    }
+
     @RequestMapping(value = "/addStatus", method = RequestMethod.POST)
     public String addStatus(HttpServletRequest request) {
         String status = request.getParameter("status_text");

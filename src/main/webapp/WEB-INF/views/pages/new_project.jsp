@@ -16,7 +16,7 @@
             <div class="input-field col s6">
                 <i class="material-icons prefix">label</i>
                 <form:input path="title" required="required" type="text" cssclass="validate"
-                    id="titleId" autfocus="true"/>
+                    id="titleId" maxlength="45" autfocus="true"/>
                 <label for="titleId">Название проекта</label>
             </div>
         </div>
@@ -40,14 +40,14 @@
 
             <div class="input-field col s4">
                 <i class="material-icons prefix">supervisor_account</i>
-                <form:input path="countParticipants" type="number" cssClass="validate" required="required"
+                <form:input path="countParticipants" type="number" min="0" cssClass="validate" required="required"
                             id="participantsId" placeholder="Колличество участников проекта"/>
                 <label for="participantsId">Количество участников</label>
             </div>
 
             <div class="input-field col s4">
                 <i class="material-icons prefix">description</i>
-                <form:input path="repositoryUrl" type="text" cssClass="validate" required="required"
+                <form:input path="repositoryUrl" type="text" maxlength="255" cssClass="validate" required="required"
                     id="repId" placeholder="Ссылка на репозиторий (если есть)"/>
                 <label for="repId">Репозиторий</label>
             </div>

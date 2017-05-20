@@ -61,7 +61,6 @@
 
 
             <c:if test="${userInProject}">
-
                 <a href="/openChat/${project.id}" class="right btn btn-floating btn-large pulse " type="submit"
                    name="action"><i class="material-icons right">chat</i>
                 </a>
@@ -98,7 +97,7 @@
                 <form action="${pageContext.request.contextPath}/education/project/addStatus" method="post">
                     <input type="hidden" name="project_id" value="${project.id}">
                     <div class="input-field">
-                        <input name="status_text" required type="text" class="validate"
+                        <input name="status_text" required type="text" maxlength="500" class="validate"
                                placeholder="Новый статус проекта">
                     </div>
                     <button class="right btn waves-effect waves-light" type="submit" name="action">Добавить
@@ -142,6 +141,14 @@
                             </div>
                         </div>
                     </c:forEach>
+                    <c:if test="${userInProject && (project.author.user.mail ne pageContext.request.userPrincipal.name)}">
+                        <form:form method="post" cssStyle="margin-bottom: 50px" action="${pageContext.request.contextPath}/education/project/leave">
+                            <input type="hidden" name="projectId" value="${project.id}">
+                            <button class="right btn red darken-1 waves-effect waves-light" type="submit" name="action">Покинуть проект
+                                <i class="material-icons right">not_interested</i>
+                            </button>
+                        </form:form>
+                    </c:if>
                 </div>
             </div>
         </div>
