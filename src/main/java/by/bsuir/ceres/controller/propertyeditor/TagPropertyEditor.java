@@ -13,7 +13,8 @@ public class TagPropertyEditor extends PropertyEditorSupport {
     }
 
     @Override
-    public String getAsText() {  String result = null;
+    public String getAsText() {
+        String result = null;
         if(getValue() != null) {
             result = Long.toString(((Tag) getValue()).getId());
         }

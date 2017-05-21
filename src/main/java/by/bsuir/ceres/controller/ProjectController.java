@@ -50,6 +50,22 @@ public class ProjectController {
         return modelAndView;
     }
 
+    @RequestMapping("/openEditProject/{projectId}")
+    public ModelAndView getEditProjectPage(@PathVariable("projectId") Long projectId,
+                                           @ModelAttribute("project")Project project,
+                                           @ModelAttribute("tags")ArrayList<Tag> tags) {
+        ModelAndView modelAndView = new ModelAndView("createProjectTemplate");
+
+        project = projectService.loadById(projectId);
+
+        tags = (ArrayList<Tag>) tagService.getAll();
+
+        modelAndView.addObject("project", project);
+        modelAndView.addObject("tags", tags);
+
+        return modelAndView;
+    }
+
     @RequestMapping(value = "/create", method = RequestMethod.POST)
     public String createProject(@ModelAttribute("project") Project project) {
 
@@ -60,6 +76,22 @@ public class ProjectController {
         project.setChat(new Chat(){{setProject(project);}});
         Project project1 = projectService.createProject(project);
         return "redirect:/education/project/" + project1.getId();
+    }
+
+    @RequestMapping(value = "/update", method = RequestMethod.POST)
+    public String updateProject(@ModelAttribute("project") Project project, HttpServletRequest request) {
+        Long projectId = Long.valueOf(request.getParameter("projectId"));
+        project.setId(projectId);
+        Project existedProject = projectService.getById(project.getId());
+        existedProject.setCountParticipants(project.getCountParticipants());
+        existedProject.setTitle(project.getTitle());
+        existedProject.setDescription(project.getDescription());
+        existedProject.setRepositoryUrl(project.getRepositoryUrl());
+        if (!project.getTags().isEmpty()) {
+            existedProject.setTags(project.getTags());
+        }
+        projectService.createProject(existedProject);
+        return "redirect:/education/project/" + existedProject.getId();
     }
 
     @RequestMapping(value = "/{projectId}")
@@ -99,6 +131,16 @@ public class ProjectController {
         Project project = projectService.loadById(projectId);
         project.getParticipants().remove(student);
 
+        projectService.createProject(project);
+
+        return "redirect:/education/project/" + project.getId();
+    }
+
+    @RequestMapping(value = "/{projectId}/removeStudent/{studentId}", method = RequestMethod.GET)
+    public String removeStudentFromProject(@PathVariable("projectId") Long projectId,
+                                           @PathVariable("studentId") Long studentId) {
+        Project project = projectService.loadById(projectId);
+        project.getParticipants().removeIf(item -> item.getId().equals(studentId));
         projectService.createProject(project);
 
         return "redirect:/education/project/" + project.getId();

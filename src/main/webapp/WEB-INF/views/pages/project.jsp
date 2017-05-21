@@ -19,6 +19,11 @@
                     <span class="card-title">Описание</span>
                     <p style="margin-top: 10px">${project.description}</p>
                 </div>
+                <c:if test="${pageContext.request.userPrincipal.name eq project.author.user.mail}">
+                    <div class="card-action">
+                        <a href="${pageContext.request.contextPath}/education/project/openEditProject/${project.id}">Редактировать</a>
+                    </div>
+                </c:if>
             </div>
         </div>
         <div class="col s6">
@@ -61,7 +66,7 @@
 
 
             <c:if test="${userInProject}">
-                <a href="/openChat/${project.id}" class="right btn btn-floating btn-large pulse " type="submit"
+                <a href="/openChat/${project.id}" class="right btn btn-floating btn-large pulse" type="submit"
                    name="action"><i class="material-icons right">chat</i>
                 </a>
             </c:if>
@@ -138,13 +143,19 @@
                             </div>
                             <div class="card-action">
                                 <a href="/education/profile/${student.id}">Профиль</a>
+                                <c:if test="${pageContext.request.userPrincipal.name eq project.author.user.mail}">
+                                    <a class="orange-text text-darken-2"
+                                       href="/education/project/${project.id}/removeStudent/${student.id}">Исключить</a>
+                                </c:if>
                             </div>
                         </div>
                     </c:forEach>
                     <c:if test="${userInProject && (project.author.user.mail ne pageContext.request.userPrincipal.name)}">
-                        <form:form method="post" cssStyle="margin-bottom: 50px" action="${pageContext.request.contextPath}/education/project/leave">
+                        <form:form method="post" cssStyle="margin-bottom: 50px"
+                                   action="${pageContext.request.contextPath}/education/project/leave">
                             <input type="hidden" name="projectId" value="${project.id}">
-                            <button class="right btn red darken-1 waves-effect waves-light" type="submit" name="action">Покинуть проект
+                            <button class="right btn red darken-1 waves-effect waves-light" type="submit" name="action">
+                                Покинуть проект
                                 <i class="material-icons right">not_interested</i>
                             </button>
                         </form:form>
