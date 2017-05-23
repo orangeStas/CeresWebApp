@@ -6195,3 +6195,9 @@ body {
 .zero-left-padding {
   padding-left: 0px!important;
 }
+
+.green-header {
+  margin-left: -1.75%;
+  width: 103.5%;
+  padding-left: 9%;
+}

@@ -7,13 +7,13 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <div class="container">
-    <div class="card-panel">
-        <div class="card-title teal darken-1" style="width: 104%; margin-left: -2%; padding-left: 9%;">
+    <div class="card-panel z-depth-2">
+        <div class="card-title cyan darken-4 green-header">
             <h3 class="white-text">Контакты</h3>
         </div>
         <div class="card-content row">
-            <div class="card offset-s1 col s10">
-                <div class="card-title teal darken-1" style="width: 103%; margin-left: -1.5%; padding-left: 3.5%;">
+            <div class="card offset-s1 col s10 z-depth-2">
+                <div class="card-title cyan darken-4" style="width: 102.5%; margin-left: -1.25%; padding-left: 3.5%;">
                     <h5 class="white-text">Координаторы проекта в Республике Беларусь:</h5>
                 </div>
                 <div class="card-content">
@@ -29,8 +29,8 @@
                 </div>
             </div>
 
-            <div class="card offset-s1 col s10">
-                <div class="card-title teal darken-1" style="width: 103%; margin-left: -1.5%; padding-left: 3.5%;">
+            <div class="card offset-s1 col s10 z-depth-2">
+                <div class="card-title cyan darken-4" style="width: 102.5%; margin-left: -1.25%; padding-left: 3.5%;">
                     <h5 class="white-text">Координаторы проекта в Словакии:</h5>
                 </div>
                 <div class="card-content">
@@ -50,8 +50,8 @@
                 </div>
             </div>
 
-            <div class="card offset-s1 col s10">
-                <div class="card-title teal darken-1" style="width: 103%; margin-left: -1.5%; padding-left: 3.5%;">
+            <div class="card offset-s1 col s10 z-depth-2">
+                <div class="card-title cyan darken-4" style="width: 102.5%; margin-left: -1.25%; padding-left: 3.5%;">
                     <h5 class="white-text">Координаторы проекта в Республике Беларусь:</h5>
                 </div>
                 <div class="card-content">

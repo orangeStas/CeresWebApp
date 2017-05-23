@@ -35,6 +35,19 @@ public class PartnersController {
 
         participants = (ArrayList<Participant>) participantService.getAllParticipants();
         contactPersons = (ArrayList<ContactPerson>) contactPersonService.getAllContactPersons();
+//
+//        for (int i = 0; i < participants.size(); i++) {
+//            if (participants.get(i) == null) {
+//                participants.get(i).setImageFileName("no_photo.png");
+//            }
+//        }
+//
+//        for (int i = 0; i < contactPersons.size(); i++) {
+//            if (contactPersons.get(i) == null) {
+//                contactPersons.get(i).setImageFileName("no_photo.png");
+//            }
+//        }
+
         modelAndView.addObject("participantsList", participants);
         modelAndView.addObject("contactPersonsList", contactPersons);
 

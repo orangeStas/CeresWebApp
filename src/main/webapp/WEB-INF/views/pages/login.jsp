@@ -40,7 +40,7 @@
         </div>
 
         <div class="col s6">
-            <div class="card teal darken-1 hoverable">
+            <div class="card cyan darken-4 hoverable">
                 <div class="card-content white-text">
                     <span class="card-title">Авторизация</span>
                     <p style="margin-top: 10px">Авторизация даст вам доступ к системе проектов и курсовых работ. У

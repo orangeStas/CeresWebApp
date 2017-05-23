@@ -14,7 +14,7 @@
     <h3 class="teal-text text-darken-1">${project.title}</h3>
     <div class="row">
         <div class="col s6">
-            <div class="card teal darken-1 hoverable">
+            <div class="card cyan darken-4 hoverable">
                 <div class="card-content white-text">
                     <span class="card-title">Описание</span>
                     <p style="margin-top: 10px">${project.description}</p>
@@ -113,7 +113,7 @@
                 <div class="card-content">
                     <h5 class="teal-text">Состав проекта</h5>
 
-                    <div class="card teal darken-1 hoverable">
+                    <div class="card cyan darken-4 hoverable">
                         <div class="card-content">
                                 <span class="card-title white-text">
                                     ${project.author.name} ${project.author.surname}
@@ -128,7 +128,7 @@
                     </div>
 
                     <c:forEach var="student" items="${project.participants}">
-                        <div class="card teal darken-1 hoverable">
+                        <div class="card cyan darken-4 hoverable">
                             <div class="card-content">
                                 <span class="card-title white-text">
                                     ${student.name} ${student.surname}

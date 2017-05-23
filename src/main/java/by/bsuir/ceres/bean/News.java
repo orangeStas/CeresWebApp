@@ -3,6 +3,10 @@ package by.bsuir.ceres.bean;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "news")
@@ -33,6 +37,14 @@ public class News implements Serializable {
 
     @Column(name = "image")
     private String imageFileName;
+
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(name = "news_comments", joinColumns = {
+            @JoinColumn(name = "id_news")
+    }, inverseJoinColumns = {
+            @JoinColumn(name = "id_comment")
+    })
+    private List<Comment> comments = new ArrayList<>();
 
     public Long getId() {
         return id;
@@ -96,5 +108,13 @@ public class News implements Serializable {
 
     public void setImageFileName(String imageFileName) {
         this.imageFileName = imageFileName;
+    }
+
+    public List<Comment> getComments() {
+        return comments;
+    }
+
+    public void setComments(List<Comment> comments) {
+        this.comments = comments;
     }
 }

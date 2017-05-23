@@ -13,7 +13,7 @@
 
 <div class="container z-depth-2">
     <div class="card-panel">
-        <div class="card-title teal darken-1" style="margin-left: -2%; width: 104%; padding-left: 19%;">
+        <div class="card-title cyan darken-4 green-header" style="padding-left: 19%;">
             <h3 class="white-text">Краткое обоснование</h3>
         </div>
         <div class="card-content row">

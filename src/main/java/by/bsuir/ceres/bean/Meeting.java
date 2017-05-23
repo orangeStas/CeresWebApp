@@ -3,6 +3,8 @@ package by.bsuir.ceres.bean;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.sql.Timestamp;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * Created by kirilltsivako on 5/18/17.
@@ -24,8 +26,20 @@ public class Meeting implements Serializable {
     @Column(name = "content")
     private String content;
 
-    @Column(name = "author")
-    private String author;
+    @Column(name = "place")
+    private String place;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "author")
+    private Student author;
+
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(name = "meeting_student", joinColumns = {
+            @JoinColumn(name = "meeting_id")
+    }, inverseJoinColumns = {
+            @JoinColumn(name = "student_id")
+    })
+    private Set<Student> participants = new HashSet<>();
 
     @Column(name = "created_at")
     private Timestamp created_at;
@@ -65,12 +79,28 @@ public class Meeting implements Serializable {
         this.content = content;
     }
 
-    public String getAuthor() {
+    public Student getAuthor() {
         return author;
     }
 
-    public void setAuthor(String author) {
+    public void setAuthor(Student author) {
         this.author = author;
+    }
+
+    public Set<Student> getParticipants() {
+        return participants;
+    }
+
+    public void setParticipants(Set<Student> participants) {
+        this.participants = participants;
+    }
+
+    public String getPlace() {
+        return place;
+    }
+
+    public void setPlace(String place) {
+        this.place = place;
     }
 
     public Timestamp getCreated_at() {
