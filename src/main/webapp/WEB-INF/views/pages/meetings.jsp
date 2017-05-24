@@ -12,7 +12,7 @@
 
 <div class="container">
     <div class="card-panel z-depth-2">
-        <div class="card-title cyan darken-4 row green-header">
+        <div class="card-title cyan darken-4 row green-header" style="margin-left: -1.75%">
             <h3 class="white-text col s9" style="margin-top: 0; margin-bottom: 0;">Встречи</h3>
             <c:if test="${not empty pageContext.request.userPrincipal.name}">
                 <div class="col s3"><a href="/meetings/addmeeting" class="btn" style="margin-top: 3%;">Создать встречу</a></div>
@@ -46,7 +46,7 @@
                         </c:if>
                     </div>
 
-                    <div class="card-tabs" style="width: 102.5%; margin-left: -1.25%;">
+                    <div class="card-tabs"">
                         <ul class="tabs tabs-fixed-width" style="padding-left: 0;">
                             <li class="tab"><a href="#short-info-tab${meeting.id}">Информация</a></li>
                             <li class="tab"><a href="#info-tab${meeting.id}">Описание</a></li>

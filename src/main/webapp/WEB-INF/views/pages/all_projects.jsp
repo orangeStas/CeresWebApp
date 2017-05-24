@@ -21,7 +21,7 @@
                     <div class="card-title row" style="margin-top: 25px; margin-bottom: 0px; margin-left: 1%;">
                         <h5 class="white-text col s11" style="margin-top: 5px;"><a class="white-text" href="/education/project/${project.id}">${project.title}</a></h5>
                     </div>
-                    <div class="card-tabs" style="width: 102.5%; margin-left: -1.25%;">
+                    <div class="card-tabs">
                         <ul class="tabs tabs-fixed-width" style="padding-left: 0;">
                             <li class="tab"><a href="#info-tab${project.id}">Описание</a></li>
                             <li class="tab"><a href="#participants-tab${project.id}">Участники</a></li>
@@ -37,6 +37,41 @@
                             </c:forEach>
                         </div>
                         <div id="participants-tab${project.id}">
+
+                            <div class="card cyan darken-4 hoverable">
+                                <div class="row">
+                                    <div class="card-content col s9" style="padding-left: 5%;">
+                                        <div class="card-title white-text">
+                                            <h5>${project.author.name} ${project.author.surname}</h5>
+                                        </div>
+                                        <p class="white-text">
+                                                ${project.author.speciality.faculty.university.name}
+                                        </p>
+                                        <p class="white-text">
+                                                ${project.author.speciality.faculty.name}
+                                        </p>
+                                        <p class="white-text">
+                                                ${project.author.speciality.name}
+                                        </p>
+                                    </div>
+
+                                    <div class="card-content col s2 right">
+                                        <c:if test="${not empty project.author.imageName}">
+                                            <img width="100" height="100" class="circle" style="margin-top: 20px;" src="${pageContext.request.contextPath}/files/${project.author.imageName}" alt="profile-image" />
+                                        </c:if>
+
+                                        <c:if test="${empty project.author.imageName}">
+                                            <img width="100" height="100" class="circle" style="margin-top: 20px;" src="https://upload.wikimedia.org/wikipedia/commons/9/9a/%D0%9D%D0%B5%D1%82_%D1%84%D0%BE%D1%82%D0%BE.png" alt="profile-image" />
+                                        </c:if>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="card-action sol s12" style="padding-left: 5%;">
+                                        <a href="/education/profile/${project.author.id}">Профиль</a>
+                                    </div>
+                                </div>
+                            </div>
+
                             <c:forEach var="student" items="${project.participants}">
                                 <div class="card cyan darken-4 hoverable">
                                     <div class="row">
