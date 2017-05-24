@@ -15,7 +15,7 @@
 <div class="container">
     <div class="row">
         <div class="col s12">
-            <div class="card teal darken-1 hoverable">
+            <div class="card cyan darken-4 hoverable">
                 <div class="card-content white-text">
                     <div class="row">
                         <div class="col s3">
@@ -33,11 +33,11 @@
                         <c:if test="${currUrl eq '/education/profile/-1'}">
                             <a href="#image-changer">
                                 <c:if test="${not empty student.imageName}">
-                                    <img width="230" height="200" class="circle" style="margin-top: 20px;" src="${pageContext.request.contextPath}/files/${student.imageName}" alt="profile-image" />
+                                    <img width="230" height="230" class="circle" style="margin-top: 20px;" src="${pageContext.request.contextPath}/files/${student.imageName}" alt="profile-image" />
                                 </c:if>
 
                                 <c:if test="${empty student.imageName}">
-                                    <img width="230" height="200" class="circle" style="margin-top: 20px;" src="https://upload.wikimedia.org/wikipedia/commons/9/9a/%D0%9D%D0%B5%D1%82_%D1%84%D0%BE%D1%82%D0%BE.png" alt="profile-image" />
+                                    <img width="230" height="230" class="circle" style="margin-top: 20px;" src="https://upload.wikimedia.org/wikipedia/commons/9/9a/%D0%9D%D0%B5%D1%82_%D1%84%D0%BE%D1%82%D0%BE.png" alt="profile-image" />
                                 </c:if>
                             </a>
                         </c:if>
@@ -70,7 +70,7 @@
                         <h4 class="teal-text">Курсовые работы</h4>
 
                         <c:forEach var="courseWork" items="${student.courseWorks}">
-                            <div class="card teal darken-1 hoverable">
+                            <div class="card cyan darken-4 hoverable">
                                 <div class="card-content">
                                     <span class="card-title white-text">
                                         Тема работы: "${courseWork.topic}"
@@ -103,7 +103,7 @@
                         <h4 class="teal-text">Активные проекты</h4>
 
                         <c:forEach var="project" items="${projects}">
-                            <div class="card teal darken-1 hoverable">
+                            <div class="card cyan darken-4 hoverable">
                                 <div class="card-content">
                                     <span class="card-title white-text">
                                             ${project.title}

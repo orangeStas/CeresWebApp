@@ -12,7 +12,7 @@
 </head>
 <body>
 <div class="container">
-    <div class="card teal darken-1 hoverable">
+    <div class="card cyan darken-4 hoverable">
         <div class="card-content white-text">
             <span class="card-title">Администрирование</span>
             <p style="margin-top: 10px">В разделе "Администрирование" Вы можете управлять содержимым
