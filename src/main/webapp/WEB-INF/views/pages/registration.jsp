@@ -23,7 +23,7 @@
                 <div class="input-field col s12 ${status.error ? 'has-error' : ''}">
                     <i class="material-icons prefix">email</i>
                     <form:input type="email" required="required" path="user.mail" class="validate"
-                                placeholder="Email" id="loginInput" autofocus="true"/>
+                                placeholder="Email" maxlength="255" id="loginInput" autofocus="true"/>
                     <form:errors path="user.mail"></form:errors>
                     <label for="loginInput">Email</label>
                 </div>
@@ -35,7 +35,7 @@
                 <div class="input-field col s6 ${status.error ? 'has-error' : ''}">
                     <i class="material-icons prefix">vpn_key</i>
                     <form:input type="password" required="required" path="user.password" class="form-control"
-                                placeholder="Пароль" id="passwordInput"></form:input>
+                                placeholder="Пароль" maxlength="60" pattern=".{5,10}" title="от 5 до 10 символов" id="passwordInput"></form:input>
                     <form:errors path="user.password"></form:errors>
                     <label for="passwordInput">Пароль</label>
                 </div>
@@ -52,21 +52,21 @@
         <div class="row">
             <div class="input-field col s4 ${status.error ? 'has-error' : ''}">
                 <i class="material-icons prefix">account_circle</i>
-                <form:input type="text"  required="required" path="student.surname" class="validate"
+                <form:input type="text"  required="required" maxlength="255" path="student.surname" class="validate"
                             placeholder="Фамилия" id="stSurnameInput"></form:input>
                 <form:errors path="student.surname"></form:errors>
                 <label for="stSurnameInput">Фамилия</label>
             </div>
 
             <div class="input-field col s4 ${status.error ? 'has-error' : ''}">
-                <form:input type="text" required="required" path="student.name" class="validate"
+                <form:input type="text" required="required" maxlength="255" path="student.name" class="validate"
                             placeholder="Имя" id="stNameInput"></form:input>
                 <form:errors path="student.name"></form:errors>
                 <label for="stNameInput">Имя</label>
             </div>
 
             <div class="input-field col s4 ${status.error ? 'has-error' : ''}">
-                <form:input type="text" required="required" path="student.middleName" class="validate"
+                <form:input type="text" required="required" maxlength="255" path="student.middleName" class="validate"
                             placeholder="Отчество" id="stMiddleNameInput"></form:input>
                 <form:errors path="student.middleName"></form:errors>
                 <label for="stMiddleNameInput">Отчество</label>
@@ -76,7 +76,7 @@
         <div class="input-field">
             <i class="material-icons prefix">list</i>
             <select required name="university" id="university">
-                <option value="" selected>Choose your option</option>
+                <option value="" selected></option>
                 <c:forEach var="univer" items="${universities}">
                     <option value="${univer.id}">${univer.name}</option>
                 </c:forEach>
@@ -87,7 +87,7 @@
         <div class="input-field">
             <i class="material-icons prefix">list</i>
             <select required id="faculty">
-                <option value="" selected>Choose your option</option>
+                <option value="" selected></option>
             </select>
             <label for="faculty">Выберите факультет</label>
         </div>
@@ -95,7 +95,7 @@
         <div class="input-field">
             <i class="material-icons prefix">list</i>
             <form:select path="student.speciality.id" required="required" id="speciality">
-                <option value="" selected>Choose your option</option>
+                <option value="" selected></option>
             </form:select>
             <label for="speciality">Выберите специальность</label>
         </div>

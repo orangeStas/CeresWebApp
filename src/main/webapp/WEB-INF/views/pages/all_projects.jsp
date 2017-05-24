@@ -36,7 +36,6 @@
                                 <div class="chip" style="margin-top: 7px">${tag.name}</div>
                             </c:forEach>
                         </div>
-
                         <div id="participants-tab${project.id}">
                             <c:forEach var="student" items="${project.participants}">
                                 <div class="card cyan darken-4 hoverable">
