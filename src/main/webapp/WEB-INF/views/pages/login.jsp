@@ -24,7 +24,7 @@
                             <label for="password">Пароль</label>
                             <input name="password" id="password" required type="password" class="form-control"/>
 
-                            <span>${error}</span>
+                            <span style="color:red">${error}</span>
 
                             <button class="btn btn-lg btn-primary btn-block" type="submit">Вход</button>
 

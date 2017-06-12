@@ -51,11 +51,11 @@
                         <div class="collapsible-body">
                             <div class="row" style="margin-left: 40px;">
                                 <div class="col s3">
-                                    <c:if test="${not empty participants.imageFileName}">
+                                    <c:if test="${not empty contactPersonsList[loop.index].imageFileName}">
                                         <img width="200" height="200" class="circle" style="margin-top: 20px;" src="${pageContext.request.contextPath}/files/${contactPersonsList[loop.index].imageFileName}" alt="profile-image" />
                                     </c:if>
 
-                                    <c:if test="${empty participants.imageFileName}">
+                                    <c:if test="${empty contactPersonsList[loop.index].imageFileName}">
                                         <img width="200" height="200" class="circle" style="margin-top: 20px;" src="resources/images/no_photo.png" alt="profile-image" />
                                     </c:if>
                                 </div>

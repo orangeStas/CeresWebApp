@@ -24,7 +24,7 @@
                     <i class="material-icons prefix">email</i>
                     <form:input type="email" required="required" path="user.mail" class="validate"
                                 placeholder="Email" maxlength="255" id="loginInput" autofocus="true"/>
-                    <form:errors path="user.mail"></form:errors>
+                    <form:errors path="user.mail" cssStyle="color:red"></form:errors>
                     <label for="loginInput">Email</label>
                 </div>
             </div>
@@ -36,14 +36,14 @@
                     <i class="material-icons prefix">vpn_key</i>
                     <form:input type="password" required="required" path="user.password" class="form-control"
                                 placeholder="Пароль" maxlength="60" pattern=".{5,10}" title="от 5 до 10 символов" id="passwordInput"></form:input>
-                    <form:errors path="user.password"></form:errors>
+                    <form:errors path="user.password" cssStyle="color:red"></form:errors>
                     <label for="passwordInput">Пароль</label>
                 </div>
 
                 <div class="input-field col s6 ${status.error ? 'has-error' : ''}">
                     <form:input type="password" required="required" path="user.passwordConfirm" class="form-control"
                                 placeholder="Повторите пароль" id="secondPasswordInput"></form:input>
-                    <form:errors path="user.passwordConfirm"></form:errors>
+                    <form:errors path="user.passwordConfirm" cssStyle="color:red"></form:errors>
                     <label for="secondPasswordInput">Повторите пароль</label>
                 </div>
             </div>
@@ -54,21 +54,21 @@
                 <i class="material-icons prefix">account_circle</i>
                 <form:input type="text"  required="required" maxlength="255" path="student.surname" class="validate"
                             placeholder="Фамилия" id="stSurnameInput"></form:input>
-                <form:errors path="student.surname"></form:errors>
+                <form:errors cssStyle="color:red" path="student.surname"></form:errors>
                 <label for="stSurnameInput">Фамилия</label>
             </div>
 
             <div class="input-field col s4 ${status.error ? 'has-error' : ''}">
                 <form:input type="text" required="required" maxlength="255" path="student.name" class="validate"
                             placeholder="Имя" id="stNameInput"></form:input>
-                <form:errors path="student.name"></form:errors>
+                <form:errors path="student.name" cssStyle="color:red"></form:errors>
                 <label for="stNameInput">Имя</label>
             </div>
 
             <div class="input-field col s4 ${status.error ? 'has-error' : ''}">
                 <form:input type="text" required="required" maxlength="255" path="student.middleName" class="validate"
                             placeholder="Отчество" id="stMiddleNameInput"></form:input>
-                <form:errors path="student.middleName"></form:errors>
+                <form:errors path="student.middleName" cssStyle="color:red"></form:errors>
                 <label for="stMiddleNameInput">Отчество</label>
             </div>
         </div>

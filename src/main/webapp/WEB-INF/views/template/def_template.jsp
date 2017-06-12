@@ -12,9 +12,9 @@
 <body>
 <div class="wrapper">
 
-<tiles:insertAttribute name="navigation"/>
+    <tiles:insertAttribute name="navigation"/>
 
-<tiles:insertAttribute name="content"/>
+    <tiles:insertAttribute name="content"/>
 </div>
 
 <footer class="page-footer cyan darken-4">
@@ -29,7 +29,7 @@
 <script type="text/javascript" src="<c:url value='/resources/js/bin/materialize.min.js'/>"></script>
 
 <script>
-    $( document ).ready(function(){
+    $(document).ready(function () {
         $('.button-collapse').sideNav();
         $('.parallax').parallax();
         $('select').material_select();
@@ -37,12 +37,29 @@
             hover: true,
             belowOrigin: true,
             constrainWidth: false,
-            alignment:  'right'
+            alignment: 'right'
         });
 
         $('.datepicker').pickadate({
-            selectMonths: true, // Creates a dropdown to control month
-            selectYears: 15, // Creates a dropdown of 15 years to control year
+            selectMonths: true,//Creates a dropdown to control month
+            selectYears: 15,//Creates a dropdown of 15 years to control year
+            //The title label to use for the month nav buttons
+            labelMonthNext: 'Следующий месяц',
+            labelMonthPrev: 'Предыдущий месяц',
+            //The title label to use for the dropdown selectors
+            labelMonthSelect: 'Выбрать месяц',
+            labelYearSelect: 'Выбрать год',
+            //Months and weekdays
+            monthsFull: ['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь'],
+            monthsShort: ['Янв', 'Фев', 'Мар', 'Апр', 'Май', 'Июн', 'Июл', 'Авг', 'Сен', 'Окт', 'Ноя', 'Дек'],
+            weekdaysFull: ['Воскресенье', 'Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота'],
+            weekdaysShort: ['Вс', 'Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб'],
+            //Materialize modified
+            weekdaysLetter: ['В', 'П', 'В', 'С', 'Ч', 'П', 'С'],
+            //Today and clear
+            today: 'Сегодня',
+            clear: '',
+            close: 'Закрыть',
             format: 'dd.mm.yyyy'
         });
     });
