@@ -2,6 +2,7 @@ package by.bsuir.ceres.bean;
 
 import javax.persistence.*;
 
+@Table(name = "tag")
 @Entity(name = "tag")
 public class Tag {
 

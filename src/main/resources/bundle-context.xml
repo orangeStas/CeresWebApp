@@ -41,6 +41,7 @@ http://www.springframework.org/schema/beans http://www.springframework.org/schem
                 <prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
                 <prop key="javax.persistence.schema-generation.database.action">none</prop>
                 <prop key="hibernate.enable_lazy_load_no_trans">true</prop>
+                <prop key="hibernate.hbm2dll.auto">update</prop>
             </props>
         </property>
         <property name="packagesToScan" value="by.bsuir.ceres"/>

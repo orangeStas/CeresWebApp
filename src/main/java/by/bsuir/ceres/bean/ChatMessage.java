@@ -4,6 +4,7 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.sql.Timestamp;
 
+@Table(name = "chat_message")
 @Entity(name = "chat_message")
 public class ChatMessage implements Serializable {
 

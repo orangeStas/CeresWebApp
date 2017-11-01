@@ -4,10 +4,11 @@ import org.hibernate.annotations.*;
 
 import javax.persistence.*;
 import javax.persistence.Entity;
+import javax.persistence.Table;
 import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
-
+@Table(name = "chat")
 @Entity(name = "chat")
 public class Chat implements Serializable {
 

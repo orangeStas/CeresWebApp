@@ -3,6 +3,7 @@ package by.bsuir.ceres.bean;
 import javax.persistence.*;
 import java.sql.Timestamp;
 
+@Table(name = "project_status")
 @Entity(name = "project_status")
 public class ProjectStatus {
     @Id
