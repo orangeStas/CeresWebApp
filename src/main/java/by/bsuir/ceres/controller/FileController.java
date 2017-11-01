@@ -15,6 +15,7 @@ import java.io.InputStream;
 public class FileController {
 
     private static final String PATH = "files/";
+    private static final String EMPTY_PHOTO_FILE_NAME = "empty_photo.png";
 
     @RequestMapping(value = "/files/{file_name:.+}", method = RequestMethod.GET)
     public void getFile(@PathVariable("file_name") String fileName, HttpServletResponse response) {
@@ -25,7 +26,15 @@ public class FileController {
             IOUtils.copy(inputStream, response.getOutputStream());
             response.flushBuffer();
         } catch (IOException e) {
-            e.printStackTrace();
+            try (InputStream inputStream = new FileInputStream(PATH + EMPTY_PHOTO_FILE_NAME)) {
+                response.setHeader("Content-Disposition",
+                        "attachment;filename=" + fileName);
+
+                IOUtils.copy(inputStream, response.getOutputStream());
+                response.flushBuffer();
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
         }
     }
 
